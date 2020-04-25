@@ -1,0 +1,12 @@
+python-language-server
+python-language-server[rope]
+pycodestyle
+pydocstyle
+pyflakes
+pylint
+sure
+watchdog
+
+git+ssh://git@github.com/pinerylabs/mamba.git@master#egg=mamba
+
+-e .

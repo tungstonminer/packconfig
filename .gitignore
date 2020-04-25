@@ -1,0 +1,12 @@
+*.egg-info/
+*.swp
+.DS_Store
+.env
+.sass-cache
+/etc/secrets/
+__pycache__/
+deploy/
+dist/
+node_modules/
+usr/
+var/
