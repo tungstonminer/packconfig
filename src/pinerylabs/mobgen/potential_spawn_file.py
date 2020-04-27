@@ -57,6 +57,9 @@ class PotentialSpawnFile(MobConfigFile):
                     "weight": creature.rarity,
                 })
 
+            if isinstance(spawn.location.biomes, str):
+                print(f"invalid spawn: {spawn.location.biomes}")
+
             entry = {
                 "biome": list(spawn.location.biomes.names),
                 "structure": spawn.location.structure,

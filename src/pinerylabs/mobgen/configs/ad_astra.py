@@ -1,6 +1,6 @@
 """Define the entity generation settings for Ad Astra."""
 
-from pinerylabs.mobgen import BiomeSet, ConfigFileSet, Creature, Location, Range, SpawnBuilder
+from pinerylabs.mobgen import BiomeSet, ConfigFileSet, Creature, Location, Loot, Range, SpawnBuilder
 from pinerylabs.oregen import Ore, OreList
 from pinerylabs.oregen.data import vanilla as mc
 
@@ -93,121 +93,273 @@ settled = BiomeSet.merge(
 )
 
 
+# Loot Items  ##########################################################################################################
+
+basalz_powder = "thermalfoundation:material:2053"
+basalz_rod = "thermalfoundation:material:2052"
+bird_carcass = "minecraft:chicken"
+bird_meat = "zawa:bird_meat"
+blaze_powder = "minecraft:blaze_powder"
+blaze_rod = "minecraft:blaze_rod"
+blitz_powder = "thermalfoundation:material:2051"
+blitz_rod = "thermalfoundation:material:2050"
+blizz_powder = "thermalfoundation:material:2049"
+blizz_rod = "thermalfoundation:material:2048"
+blubber = "zawa:blubber"
+bone = "minecraft:bone"
+bottle_o_enchanting = "minecraft:experience_bottle"
+bush_meat = "zawa:bush_meat_raw"
+carnivore_meat = "zawa:carnivore_meat_raw"
+cetacean_meat = "zawa:cetacean_meat_raw"
+cichlid_carcass = "zawa:raw_cichlid"
+clownfish_carcass = "minecraft:fish:2"
+cow_meat = "minecraft:beef"
+crab_carcass = "harvestcraft:crabrawitem"
+crab_meat = "zawa:raw_crab_leg"
+crocodile_leather = "zawa:crocodile_leather"
+crocodile_tooth = "zawa:crocodile_tooth"
+diamond = "minecraft:diamond"
+duck_meat = "harvestcraft:duckrawitem"
+eel_carcass = "harvestcraft:eelrawitem"
+elephant_leather = "zawa:elephant_leather"
+elephant_tusk = "zawa:ivory_tusk"
+emerald = "minecraft:emerald"
+ender_pearl = "minecraft:ender_pearl"
+feather = "minecraft:feather"
+fire_charge = "minecraft:fire_charge"
+fish_carcass = "minecraft:fish"
+fish_meat = "harvestcraft:groundfishitem"
+foliaath_seed = "mowziesmobs:foliaath_seed"
+frog_carcass = "harvestcraft:frograwitem"
+frog_meat = "zawa:raw_frog_leg"
+game_meat = "harvestcraft:venisonrawitem"
+generic_fur = "zawa:fur"
+generic_leather = "minecraft:leather"
+ghast_tear = "minecraft:ghast_tear"
+giraffe_fur = "zawa:giraffe_hide"
+gorilla_fur = "zawa:gorilla_hide"
+gunpowder = "minecraft:gunpowder"
+ink_sac = "minecraft:dye"
+iron_block = "minecraft:iron_block"
+iron_ingot = "minecraft:iron_ingot"
+iron_nugget = "minecraft:iron_nugget"
+kale = "harvestcraft:kaleitem"
+leopard_fur = "zawa:amur_leopard_hide"
+luminous_jelly = "mowziesmobs:glowing_jelly"
+magma_cream = "minecraft:magma_cream"
+mushroom_item = "minecraft:red_mushroom"
+naga_fang = "mowziesmobs:naga_fang"
+octobus_carcass = "harvestcraft:octopusrawitem"
+pangolin_scale = "zawa:pangolin_scale"
+pig_meat = "minecraft:porkchop"
+pufferfish_carcass = "minecraft:fish:3"
+rabbit_carcass = "minecraft:rabbit"
+rabbit_foot = "minecraft:rabbit_foot"
+rat_carcass = "zawa:rat_raw"
+reptile_leather = "zawa:reptile_hide"
+reptile_meat = "zawa:reptile_meat_raw"
+rhino_leather = "zawa:rhino_hide"
+rhino_horn = "zawa:rhino_horn"
+ruminant_meat = "zawa:large_meat_raw"
+salmon_carcass = "minecraft:fish:1"
+sheep_meat = "minecraft:mutton"
+slime = "minecraft:slime_ball"
+small_fur = "minecraft:rabbit_hide"
+snake_skin = "zawa:snakeskin"
+spider_eye = "minecraft:spider_eye"
+squid_carcass = "harvestcraft:calamarirawitem"
+thick_fur = "zawa:thick_fur"
+tiger_fur = "zawa:tiger_fur"
+tortoise_shell = "zawa:tortoise_shell"
+turkey_meat = "harvestcraft:turkeyrawitem"
+turtle_carcass = "harvestcraft:turtlerawitem"
+venom_sac = "zawa:toxin_sac"
+wool = "minecraft:wool"
+white_fur = "zawa:polar_bear_hide"
+zebra_leather = "zawa:zebra_leather"
+
+
+# Loot Collections #####################################################################################################
+
+amphibian_small_loot = [Loot("0-1", frog_carcass), Loot("0-1", frog_meat)]
+basalz_loot = [Loot("1-3", basalz_rod), Loot("2-4", basalz_powder)]
+bird_large_loot = [Loot("1", bird_carcass), Loot("2-4", bird_meat), Loot("2-5", feather)]
+bird_medium_loot = [Loot("1", bird_carcass), Loot("0-1", bird_meat), Loot("1-3", feather)]
+bird_small_loot = [Loot("1", bird_meat), Loot("0-2", feather)]
+blaze_loot = [Loot("1-3", blaze_rod), Loot("2-4", blaze_powder)]
+blitz_loot = [Loot("1-3", blitz_rod), Loot("2-4", blitz_powder)]
+blizz_loot = [Loot("1-3", blizz_rod), Loot("2-4", blizz_powder)]
+cat_large_loot = [Loot("1", generic_fur), Loot("1-2", carnivore_meat), Loot("1-2", bone)]
+cat_leopard_loot = [Loot("1", leopard_fur), Loot("1-2", carnivore_meat), Loot("1-2", bone)]
+cat_tiger_loot = [Loot("1", tiger_fur), Loot("2-3", carnivore_meat), Loot("2-3", bone)]
+cetacean_large_loot = [Loot("4-8", cetacean_meat), Loot("4-8", bone), Loot("3-6", blubber)]
+cetacean_medium_loot = [Loot("3-4", cetacean_meat), Loot("3-4", bone), Loot("2-4", blubber)]
+cetacean_small_loot = [Loot("2-3", cetacean_meat), Loot("2-3", bone), Loot("1-3", blubber)]
+cow_domestic_loot = [Loot("1", generic_leather), Loot("1-2", cow_meat), Loot("1-2", bone)]
+cow_fatty_loot = [Loot("1-2", generic_leather), Loot("1-2", blubber), Loot("3-4", ruminant_meat), Loot("3-4", bone)]
+cow_fungal_loot = [Loot("1", generic_leather), Loot("1-2", cow_meat), Loot("1-2", bone), Loot("1-3", mushroom_item)]
+cow_furry_loot = [Loot("1-2", generic_leather), Loot("1-2", thick_fur), Loot("3-4", ruminant_meat), Loot("3-4", bone)]
+crab_loot = [Loot("0-1", crab_carcass), Loot("1-2", crab_meat)]
+creeper_loot = [Loot("3-4", gunpowder), Loot("0-1", reptile_leather)]
+crocodile_loot = [Loot("3-4", reptile_meat), Loot("2-3", crocodile_leather), Loot("2-3", bone)]
+elephant_loot = [
+    Loot("3-4", elephant_leather), Loot("4-8", ruminant_meat), Loot("4-8", bone), Loot("1-2", elephant_tusk)
+]
+enderman_loot = [Loot("1", ender_pearl)]
+fish_large_loot = [Loot("1", fish_carcass), Loot("4-8", fish_meat)]
+fish_medium_loot = [Loot("1", fish_carcass), Loot("2-4", fish_meat)]
+fish_small_loot = [Loot("1", fish_carcass)]
+foliaath_loot = [Loot("0-1", foliaath_seed), Loot("3-4", kale)]
+frostmaw_loot = [Loot("3-5", white_fur), Loot("5-7", carnivore_meat)]
+ghast_loot = [Loot("1-3", ghast_tear), Loot("0-1", fire_charge), Loot("0-2", gunpowder)]
+giraffe_loot = [Loot("1-2", giraffe_fur), Loot("4-5", ruminant_meat), Loot("4-5", bone)]
+gorilla_loot = [Loot("1-2", bush_meat), Loot("1", gorilla_fur), Loot("1", bone)]
+grizzly_bear_loot = [Loot("1-2", thick_fur), Loot("3-4", carnivore_meat)]
+horse_loot = [Loot("1", generic_leather), Loot("2-3", game_meat), Loot("1-2", bone)]
+horse_zebra_loot = [Loot("1", zebra_leather), Loot("2-3", game_meat), Loot("1-2", bone)]
+iron_golem_loot = [Loot("1", iron_block), Loot("1-4", iron_ingot), Loot("0-1", bottle_o_enchanting)]
+lantern_loot = [Loot("2-3", luminous_jelly), Loot("0-1", slime)]
+llama_loot = [Loot("1-2", wool), Loot("1-2", sheep_meat), Loot("1-2", bone)]
+magma_cube_loot = [Loot("1-3", magma_cream)]
+mammal_large_loot = [Loot("1-2", bush_meat), Loot("1", generic_fur), Loot("1", bone)]
+mammal_medium_loot = [Loot("1", bush_meat), Loot("1", small_fur)]
+mammal_small_loot = [Loot("1", rat_carcass)]
+naga_loot = [Loot("3-4", reptile_leather), Loot("2-4", naga_fang), Loot("2-4", reptile_meat), Loot("0-1", venom_sac)]
+pig_loot = [Loot("2-3", pig_meat), Loot("1-2", bone)]
+polar_bear_loot = [Loot("1-2", white_fur), Loot("3-4", carnivore_meat)]
+rabbit_loot = [Loot("0-1", rabbit_foot), Loot("1", rabbit_carcass), Loot("1", small_fur)]
+reptile_large_loot = [Loot("2-4", reptile_meat), Loot("1-2", reptile_leather), Loot("1-2", bone)]
+reptile_medium_loot = [Loot("1-2", reptile_meat), Loot("1", reptile_leather), Loot("1", bone)]
+reptile_small_loot = [Loot("1", reptile_meat), Loot("1", reptile_leather)]
+reptile_turtle_loot = [Loot("1", turtle_carcass), Loot("1", bone), Loot("0-1", tortoise_shell)]
+rhino_loot = [Loot("1-2", rhino_leather), Loot("3-4", ruminant_meat), Loot("3-4", bone), Loot("1", rhino_horn)]
+snake_loot = [Loot("3-4", reptile_meat), Loot("1-2", snake_skin)]
+spider_loot = [Loot("1-4", spider_eye), Loot("2-6", crab_meat)]
+squid_loot = [Loot("1", squid_carcass), Loot("1", ink_sac)]
+wolf_loot = [Loot("1", carnivore_meat), Loot("1", bone), Loot("1", generic_fur)]
+
+
+mammal_venomous_loot = mammal_medium_loot + [Loot("0-1", venom_sac)]
+pangolin_loot = mammal_medium_loot + [Loot("2-4", pangolin_scale)]
+reptile_venomous_loot = reptile_medium_loot + [Loot("0-1", venom_sac)]
+spider_venomous_loot = spider_loot + [Loot("0-1", venom_sac)]
+
+
 # Animals ##############################################################################################################
 
-albatross = Creature("zawa:albatross", LONER)
-alligator = Creature("zawa:indiangharial", PAIR)
-anaconda = Creature("zawa:greenanaconda", LONER)
-baby_foliaath = Creature("mowziesmobs:baby_foliaath", CLUSTER)
-basalz = Creature("thermalfoundation:basalz", CLUSTER)
-bat = Creature("minecraft:bat")
-bear_grizzly = Creature("zawa:grizzlybear", PAIR)
-bear_polar = Creature("zawa:polarbear", LONER)
-beaver = Creature("zawa:beaver", PAIR)
-bison = Creature("zawa:americanbison", SWARM)
-blaze = Creature("minecraft:blaze", CLUSTER)
-blitz = Creature("thermalfoundation:blitz", CLUSTER)
-blizz = Creature("thermalfoundation:blizz", CLUSTER)
-bluefish = Creature("zawa:bluefish", SWARM)
-cassowary = Creature("zawa:cassowary", PAIR)
-cave_spider = Creature("minecraft:cave_spider", LONER)
-chicken = Creature("minecraft:chicken", TROOP)
-chimp = Creature("zawa:commonchimpanzee", TROOP)
-cichlid = Creature("zawa:cichlid", HERD)
-clownfish = Creature("zawa:clownfish", CLUSTER)
-coatimundi = Creature("zawa:coatimundi", TROOP)
-cockatoo = Creature("zawa:cockatoo", TROOP)
-condor = Creature("zawa:andeancondor", PAIR)
-cow = Creature("minecraft:cow", PAIR)
-crab = Creature("zawa:coconutcrab", CLUSTER)
-creeper = Creature("minecraft:creeper", LONER)
-dolphin_ocean = Creature("zawa:bottlenosedolphin", HERD)
-dolphin_river = Creature("zawa:amazonriverdolphin", CLUSTER)
-donkey = Creature("minecraft:donkey", PAIR)
-eagle_bald = Creature("zawa:baldeagle", PAIR)
-eagle_harpy = Creature("zawa:harpyeagle", PAIR)
-echidna = Creature("zawa:echidna", LONER)
-eel = Creature("zawa:morayeel", LONER)
-elephant = Creature("zawa:africanelephant", HERD)
-elephant_asian = Creature("zawa:asianelephant", CLUSTER)
-enderman = Creature("minecraft:enderman", CLUSTER)
-foliaath = Creature("mowziesmobs:foliaath", LONER)
-frigate = Creature("zawa:frigate", TROOP)
-frostmaw = Creature("mowziesmobs:frostmaw", LONER)
-gaur = Creature("zawa:gaur", HERD)
-ghast = Creature("minecraft:ghast", LONER)
-gilamonster = Creature("zawa:gilamonster", LONER)
-giraffe = Creature("zawa:reticulatedgiraffe", HERD)
-gorilla = Creature("zawa:westernlowlandgorilla", TROOP)
-grottol = Creature("mowziesmobs:grottol", CLUSTER)
-hippo_nile = Creature("zawa:nilehippopotamus", TROOP)
-hippo_pygmy = Creature("zawa:pygmyhippopotamus", PAIR)
-horse = Creature("horse_colors:horse_felinoid", HERD)
-horse_mc = Creature("minecraft:horse", HERD)
+albatross = Creature("zawa:albatross", LONER, loot_list=bird_medium_loot)
+alligator = Creature("zawa:indiangharial", PAIR, loot_list=crocodile_loot)
+anaconda = Creature("zawa:greenanaconda", LONER, loot_list=snake_loot)
+baby_foliaath = Creature("mowziesmobs:baby_foliaath", CLUSTER, loot_list=[])
+basalz = Creature("thermalfoundation:basalz", CLUSTER, loot_list=basalz_loot)
+bat = Creature("minecraft:bat", loot_list=mammal_small_loot)
+bear_grizzly = Creature("zawa:grizzlybear", PAIR, loot_list=grizzly_bear_loot)
+bear_polar = Creature("zawa:polarbear", LONER, loot_list=polar_bear_loot)
+beaver = Creature("zawa:beaver", PAIR, loot_list=mammal_large_loot)
+bison = Creature("zawa:americanbison", SWARM, loot_list=cow_furry_loot)
+blaze = Creature("minecraft:blaze", CLUSTER, loot_list=blaze_loot)
+blitz = Creature("thermalfoundation:blitz", CLUSTER, loot_list=blitz_loot)
+blizz = Creature("thermalfoundation:blizz", CLUSTER, loot_list=blizz_loot)
+bluefish = Creature("zawa:bluefish", SWARM, loot_list=fish_small_loot)
+cassowary = Creature("zawa:cassowary", PAIR, loot_list=bird_large_loot)
+cave_spider = Creature("minecraft:cave_spider", LONER, loot_list=spider_venomous_loot)
+chicken = Creature("minecraft:chicken", TROOP, loot_list=bird_medium_loot)
+chimp = Creature("zawa:commonchimpanzee", TROOP, loot_list=mammal_large_loot)
+cichlid = Creature("zawa:cichlid", HERD, loot_list=[Loot("1", cichlid_carcass)])
+clownfish = Creature("zawa:clownfish", CLUSTER, loot_list=[Loot("1", clownfish_carcass)])
+coatimundi = Creature("zawa:coatimundi", TROOP, loot_list=mammal_medium_loot)
+cockatoo = Creature("zawa:cockatoo", TROOP, loot_list=bird_small_loot)
+condor = Creature("zawa:andeancondor", PAIR, loot_list=bird_medium_loot)
+cow = Creature("minecraft:cow", PAIR, loot_list=cow_domestic_loot)
+crab = Creature("zawa:coconutcrab", CLUSTER, loot_list=crab_loot)
+creeper = Creature("minecraft:creeper", LONER, loot_list=creeper_loot)
+dolphin_ocean = Creature("zawa:bottlenosedolphin", HERD, loot_list=cetacean_small_loot)
+dolphin_river = Creature("zawa:amazonriverdolphin", CLUSTER, loot_list=cetacean_small_loot)
+donkey = Creature("minecraft:donkey", PAIR, loot_list=horse_loot)
+eagle_bald = Creature("zawa:baldeagle", PAIR, loot_list=bird_medium_loot)
+eagle_harpy = Creature("zawa:harpyeagle", PAIR, loot_list=bird_large_loot)
+echidna = Creature("zawa:echidna", LONER, loot_list=mammal_medium_loot)
+eel = Creature("zawa:morayeel", LONER, loot_list=[Loot("1", eel_carcass)])
+elephant = Creature("zawa:africanelephant", HERD, loot_list=elephant_loot)
+elephant_asian = Creature("zawa:asianelephant", CLUSTER, loot_list=elephant_loot)
+enderman = Creature("minecraft:enderman", CLUSTER, loot_list=enderman_loot)
+foliaath = Creature("mowziesmobs:foliaath", LONER, loot_list=foliaath_loot)
+frigate = Creature("zawa:frigate", TROOP, loot_list=bird_small_loot)
+frostmaw = Creature("mowziesmobs:frostmaw", LONER, loot_list=frostmaw_loot)
+gaur = Creature("zawa:gaur", HERD, loot_list=cow_furry_loot)
+ghast = Creature("minecraft:ghast", LONER, loot_list=ghast_loot)
+gilamonster = Creature("zawa:gilamonster", LONER, loot_list=reptile_venomous_loot)
+giraffe = Creature("zawa:reticulatedgiraffe", HERD, loot_list=giraffe_loot)
+gorilla = Creature("zawa:westernlowlandgorilla", TROOP, loot_list=gorilla_loot)
+grottol = Creature("mowziesmobs:grottol", CLUSTER, loot_list=[Loot("1", diamond, diamond, diamond, emerald)])
+hippo_nile = Creature("zawa:nilehippopotamus", TROOP, loot_list=cow_fatty_loot)
+hippo_pygmy = Creature("zawa:pygmyhippopotamus", PAIR, loot_list=cow_fatty_loot)
+horse = Creature("horse_colors:horse_felinoid", HERD, loot_list=horse_loot)
+horse_mc = Creature("minecraft:horse", HERD, loot_list=horse_loot)
 husk = Creature("minecraft:husk", CLUSTER)
-iguana_fiji = Creature("zawa:fijibandediguana", PAIR)
-iguana_marine = Creature("zawa:marineiguana", PAIR)
-iron_golem = Creature("minecraft:villager_golem", LONER)
-jaguar = Creature("zawa:jaguar", LONER)
-kangaroo = Creature("zawa:redkangaroo", TROOP)
-koala = Creature("zawa:koala", CLUSTER)
-komododragon = Creature("zawa:komododragon", LONER)
-lantern = Creature("mowziesmobs:lantern", CLUSTER)
-leopard = Creature("zawa:amurleopard", LONER)
-lion = Creature("zawa:africanlion", TROOP)
-llama = Creature("minecraft:llama", HERD)
-macaw = Creature("zawa:macaw", TROOP)
-magma_cube = Creature("minecraft:magma_cube", TROOP)
-meerkat = Creature("zawa:meerkat", TROOP)
-monkey_spider = Creature("zawa:blackspidermonkey", TROOP)
-moose = Creature("zawa:moose", PAIR)
-mooshroom = Creature("minecraft:mooshroom", HERD)
-mule = Creature("minecraft:mule", HERD, DAY)
-naga = Creature("mowziesmobs:naga", PAIR)
-ocelot = Creature("minecraft:ocelot", LONER)
-octopus = Creature("zawa:octopus", LONER)
-okapi = Creature("zawa:okapi", CLUSTER)
-orca = Creature("zawa:orca", CLUSTER)
-owl = Creature("zawa:greathornedowl", LONER)
-panda_red = Creature("zawa:redpanda", PAIR)
-pangolin = Creature("zawa:indianpangolin", CLUSTER)
-parrot = Creature("minecraft:parrot", TROOP)
-pig = Creature("minecraft:pig", PAIR)
-platypus = Creature("zawa:platypus", PAIR)
-pufferfish = Creature("zawa:pufferfish", CLUSTER)
-rabbit = Creature("minecraft:rabbit", CLUSTER)
-rat = Creature("zawa:brownrat", TROOP, NIGHT)
-rattlesnake = Creature("zawa:rattlesnake", LONER)
-rhino_black = Creature("zawa:blackrhinoceros", CLUSTER)
-rhino_sumatran = Creature("zawa:sumatranrhinoceros", PAIR)
-salamander = Creature("zawa:japanesegiantsalamander", LONER)
-salmon = Creature("zawa:sockeyesalmon", SWARM)
-sea_turtle = Creature("zawa:hawksbillseaturtle", CLUSTER)
-shark_great_white = Creature("zawa:greatwhiteshark", LONER)
-shark_tiger = Creature("zawa:tigershark", PAIR)
-sheep = Creature("minecraft:sheep", HERD)
+iguana_fiji = Creature("zawa:fijibandediguana", PAIR, loot_list=reptile_small_loot)
+iguana_marine = Creature("zawa:marineiguana", PAIR, loot_list=reptile_medium_loot)
+iron_golem = Creature("minecraft:villager_golem", LONER, loot_list=iron_golem_loot)
+jaguar = Creature("zawa:jaguar", LONER, loot_list=cat_leopard_loot)
+kangaroo = Creature("zawa:redkangaroo", TROOP, loot_list=mammal_medium_loot)
+koala = Creature("zawa:koala", CLUSTER, loot_list=mammal_medium_loot)
+komododragon = Creature("zawa:komododragon", LONER, loot_list=reptile_venomous_loot)
+lantern = Creature("mowziesmobs:lantern", CLUSTER, loot_list=lantern_loot)
+leopard = Creature("zawa:amurleopard", LONER, loot_list=cat_leopard_loot)
+lion = Creature("zawa:africanlion", TROOP, loot_list=cat_large_loot)
+llama = Creature("minecraft:llama", HERD, loot_list=llama_loot)
+macaw = Creature("zawa:macaw", TROOP, loot_list=bird_small_loot)
+magma_cube = Creature("minecraft:magma_cube", TROOP, loot_list=magma_cube_loot)
+meerkat = Creature("zawa:meerkat", TROOP, loot_list=mammal_small_loot)
+monkey_spider = Creature("zawa:blackspidermonkey", TROOP, loot_list=mammal_medium_loot)
+moose = Creature("zawa:moose", PAIR, loot_list=cow_furry_loot)
+mooshroom = Creature("minecraft:mooshroom", HERD, loot_list=cow_fungal_loot)
+mule = Creature("minecraft:mule", HERD, DAY, loot_list=horse_loot)
+naga = Creature("mowziesmobs:naga", PAIR, loot_list=naga_loot)
+ocelot = Creature("minecraft:ocelot", LONER, loot_list=cat_leopard_loot)
+octopus = Creature("zawa:octopus", LONER, loot_list=[Loot("1", octobus_carcass)])
+okapi = Creature("zawa:okapi", CLUSTER, loot_list=horse_loot)
+orca = Creature("zawa:orca", CLUSTER, loot_list=cetacean_medium_loot)
+owl = Creature("zawa:greathornedowl", LONER, loot_list=bird_medium_loot)
+panda_red = Creature("zawa:redpanda", PAIR, loot_list=mammal_medium_loot)
+pangolin = Creature("zawa:indianpangolin", CLUSTER, loot_list=pangolin_loot)
+parrot = Creature("minecraft:parrot", TROOP, loot_list=bird_small_loot)
+pig = Creature("minecraft:pig", PAIR, loot_list=pig_loot)
+platypus = Creature("zawa:platypus", PAIR, loot_list=mammal_venomous_loot)
+pufferfish = Creature("zawa:pufferfish", CLUSTER, loot_list=[Loot("1", pufferfish_carcass)])
+rabbit = Creature("minecraft:rabbit", CLUSTER, loot_list=rabbit_loot)
+rat = Creature("zawa:brownrat", TROOP, NIGHT, loot_list=mammal_small_loot)
+rattlesnake = Creature("zawa:rattlesnake", LONER, loot_list=reptile_venomous_loot)
+rhino_black = Creature("zawa:blackrhinoceros", CLUSTER, loot_list=rhino_loot)
+rhino_sumatran = Creature("zawa:sumatranrhinoceros", loot_list=rhino_loot)
+salamander = Creature("zawa:japanesegiantsalamander", LONER, loot_list=reptile_medium_loot)
+salmon = Creature("zawa:sockeyesalmon", SWARM, loot_list=[Loot("1", salmon_carcass)])
+sea_turtle = Creature("zawa:hawksbillseaturtle", CLUSTER, loot_list=reptile_turtle_loot)
+shark_great_white = Creature("zawa:greatwhiteshark", LONER, loot_list=fish_large_loot)
+shark_tiger = Creature("zawa:tigershark", PAIR, loot_list=fish_medium_loot)
+sheep = Creature("minecraft:sheep", HERD)  # don't override loot to allow colored sheep
 skeleton = Creature("minecraft:skeleton", PAIR)
 skeleton_horse = Creature("minecraft:skeleton_horse", LONER)
 slime = Creature("minecraft:slime", CLUSTER)
-sloth = Creature("zawa:threetoedsloth", LONER)
+sloth = Creature("zawa:threetoedsloth", LONER, loot_list=mammal_medium_loot)
 snowman = Creature("minecraft:snowman", LONER)
-spider = Creature("minecraft:spider", LONER, NIGHT)
-squid = Creature("minecraft:squid", TROOP)
+spider = Creature("minecraft:spider", LONER, NIGHT, loot_list=spider_loot)
+squid = Creature("minecraft:squid", TROOP, loot_list=squid_loot)
 stray = Creature("minecraft:stray", PAIR)
-tamarin = Creature("zawa:goldenliontamarin", TROOP)
-tang = Creature("zawa:marinetang", HERD)
-tapir = Creature("zawa:braziliantapir", PAIR)
-tasmanian_devil = Creature("zawa:tasmaniandevil", PAIR)
-tiger = Creature("zawa:bengaltiger", LONER)
-tortoise = Creature("zawa:galapagostortoise", CLUSTER)
-toucan = Creature("zawa:toucan", CLUSTER)
-treefrog = Creature("zawa:treefrog", CLUSTER)
-walrus = Creature("zawa:pacificwalrus", HERD)
-whale_humpback = Creature("zawa:humpbackwhale", CLUSTER)
+tamarin = Creature("zawa:goldenliontamarin", TROOP, loot_list=mammal_medium_loot)
+tang = Creature("zawa:marinetang", HERD, loot_list=fish_small_loot)
+tapir = Creature("zawa:braziliantapir", PAIR, loot_list=cow_domestic_loot)
+tasmanian_devil = Creature("zawa:tasmaniandevil", PAIR, loot_list=mammal_medium_loot)
+tiger = Creature("zawa:bengaltiger", LONER, loot_list=cat_tiger_loot)
+tortoise = Creature("zawa:galapagostortoise", CLUSTER, loot_list=reptile_turtle_loot)
+toucan = Creature("zawa:toucan", CLUSTER, loot_list=bird_small_loot)
+treefrog = Creature("zawa:treefrog", CLUSTER, loot_list=amphibian_small_loot)
+walrus = Creature("zawa:pacificwalrus", HERD, loot_list=cetacean_small_loot)
+whale_humpback = Creature("zawa:humpbackwhale", CLUSTER, loot_list=cetacean_large_loot)
 witch = Creature("minecraft:witch", LONER)
 wither_skeleton = Creature("minecraft:wither_skeleton", CLUSTER)
-wolf = Creature("minecraft:wolf", TROOP)
-zebra = Creature("zawa:grevyszebra", HERD)
+wolf = Creature("minecraft:wolf", TROOP, loot_list=wolf_loot)
+zebra = Creature("zawa:grevyszebra", HERD, loot_list=horse_zebra_loot)
 zombie = Creature("minecraft:zombie", CLUSTER)
 zombie_horse = Creature("minecraft:zombie_horse", LONER)
 zombie_pigman = Creature("minecraft:zombie_pigman", SWARM)
@@ -264,8 +416,9 @@ with b.location(Location(desert)):
 with b.location(Location(desert.in_cave())):
     with b.active_periods(ANY):
         with b.altitude(upper=48):
-            with b.spawn(16, 1):
-                b.add(blaze.configure(20, 10))
+            with b.light(upper=0):
+                with b.spawn(16, 1):
+                    b.add(blaze.configure(20, 10))
 
 with b.location(Location(desert, weather="thunder")):
     with b.active_periods(ANY):
@@ -380,7 +533,7 @@ with b.location(Location(mesa)):
 
 with b.location(Location(mesa.in_cave())):
     with b.active_periods(ANY):
-        with b.altitude(upper=48):
+        with b.light(upper=0):
             with b.spawn(32, 1):
                 b.add(blaze.configure(20, 20))
 
@@ -408,8 +561,9 @@ with b.location(Location(mountain)):
 with b.location(Location(mountain.in_cave())):
     with b.active_periods(ANY):
         with b.altitude(upper=48):
-            with b.spawn(48, 1):
-                b.add(basalz.configure(20, 16))
+            with b.light(upper=0):
+                with b.spawn(48, 1):
+                    b.add(basalz.configure(20, 16))
 
         with b.spawn(16, 1):
             b.add(iron_golem.configure(10, 8))
@@ -493,8 +647,9 @@ with b.location(Location(plains)):
 with b.location(Location(BiomeSet.merge(plains, savanna).in_cave())):
     with b.active_periods(ANY):
         with b.altitude(upper=48):
-            with b.spawn(16, 1):
-                b.add(blitz.configure(20, 10))
+            with b.light(upper=0):
+                with b.spawn(16, 1):
+                    b.add(blitz.configure(20, 10))
 
 with b.location(Location(BiomeSet.merge(plains, savanna), weather="thunder")):
     with b.active_periods(ANY):
@@ -634,8 +789,9 @@ with b.location(Location(tundra)):
 with b.location(Location(tundra.in_cave())):
     with b.active_periods(ANY):
         with b.altitude(upper=48):
-            with b.spawn(16, 1):
-                b.add(blizz.configure(20, 10))
+            with b.light(upper=0):
+                with b.spawn(16, 1):
+                    b.add(blizz.configure(20, 10))
 
 with b.location(Location(tundra, weather="thunder")):
     with b.active_periods(ANY):

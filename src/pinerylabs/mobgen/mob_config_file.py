@@ -4,7 +4,7 @@ import json
 import os
 
 from io import FileIO
-from typing import Any, Dict, Iterable, Optional
+from typing import Any, Dict, Iterable, List, Optional, Union
 
 from pinerylabs.mobgen import Creature, Spawn
 from pinerylabs.mobgen.spawn import FILLER_MOB
@@ -74,7 +74,7 @@ class MobConfigFile(object):
 
     # Public Methods ###############################################################################
 
-    def as_json(self) -> Dict[str, Any]:
+    def as_json(self) -> Union[List[Any], Dict[str, Any]]:
         """Convert this file's data into a JSON-able representation."""
         return []
 

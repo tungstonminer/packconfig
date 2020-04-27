@@ -1,9 +1,10 @@
 """Define classes to do with entity spawning."""
 
 from .biome_set import BiomeSet
+from .loot import Loot
 from .range import Range
 
-from .creature import Creature  # uses Range
+from .creature import Creature  # uses Loot, Range
 from .location import Location  # uses BiomeSet, Range
 
 from .spawn import Spawn  # uses Creature, Location
@@ -12,7 +13,7 @@ from .mob_config_file import MobConfigFile  # uses Creature, Location, Spawn
 from .spawn_builder import SpawnBuilder  # uses Location, Spawn
 
 from .experience_file import ExperienceFile  # uses MobConfigFile, Spawn
-from .loot_file import LootFile  # uses MobConfigFile, Spawn
+from .loot_file import LootFile  # uses Loot, MobConfigFile, Spawn
 from .potential_spawn_file import PotentialSpawnFile  # uses Creature, Location, MobConfigFile, Spawn
 from .spawn_file import SpawnFile  # uses Creature, Location, MobConfigFile, Spawn
 from .summon_aid_file import SummonAidFile  # uses MobConfigFile, Spawn
@@ -25,6 +26,7 @@ __all__ = [
     "Creature",
     "ExperienceFile",
     "Location",
+    "Loot",
     "LootFile",
     "MobConfigFile",
     "Range",

@@ -17,6 +17,7 @@ class SpawnBuilder(object):
         self._active_periods = None
         self._altitude = None
         self._current_spawn = None
+        self._light = None
         self._location = None
         self._spawns = []
 
@@ -70,6 +71,18 @@ class SpawnBuilder(object):
             self._altitude = None
 
     @contextmanager
+    def light(self, lower: int = 0, upper: int = 15) -> SpawnBuilder:
+        """Overright the light level of spawns created in this block."""
+        if self._current_spawn:
+            raise RuntimeError("cannot change light level once a spawn is in progress")
+
+        self._light = Range(lower, upper)
+        try:
+            yield self
+        finally:
+            self._light = None
+
+    @contextmanager
     def location(self, location: Location) -> SpawnBuilder:
         """Override the location of spawns created in this block."""
         if self._current_spawn:
@@ -90,7 +103,9 @@ class SpawnBuilder(object):
         if self._location is None:
             raise RuntimeError("cannot start a spawn without a location")
 
-        self._current_spawn = Spawn(self._location, limit=limit, cycle_length=cycle_length, altitude=self._altitude)
+        self._current_spawn = Spawn(
+            self._location, light=self._light, limit=limit, cycle_length=cycle_length, altitude=self._altitude
+        )
         try:
             yield self
         finally:

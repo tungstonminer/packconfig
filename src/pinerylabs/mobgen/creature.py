@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import Iterable, Optional
 
-from pinerylabs.mobgen import Range
+from pinerylabs.mobgen import Loot, Range
 
 
 ########################################################################################################################
@@ -18,6 +18,7 @@ class Creature(object):
         active_periods: Iterable[Range] = None,
         rarity: int = 1,
         groups_allowed: int = 1,
+        loot_list: Iterable[Loot] = None,
     ):
         """
         Define a new creature group.
@@ -34,8 +35,9 @@ class Creature(object):
         self.active_periods = active_periods
         self.entity_id = entity_id
         self.group_size = group_size
-        self.rarity = rarity
         self.groups_allowed = groups_allowed
+        self.loot_list = loot_list
+        self.rarity = rarity
 
         if self.active_periods is None:
             self.active_periods = [Range(0, 24000)]
@@ -69,6 +71,17 @@ class Creature(object):
 
     # Public Methods ###############################################################################
 
+    def clone(self) -> Creature:
+        """Return a new Creature with a different rarity score."""
+        return Creature(
+            active_periods=self.active_periods,
+            entity_id=self.entity_id,
+            group_size=self.group_size,
+            groups_allowed=self.groups_allowed,
+            loot_list=self.loot_list,
+            rarity=self.rarity,
+        )
+
     def configure(
         self,
         rarity: Optional[int] = None,
@@ -76,24 +89,32 @@ class Creature(object):
         group_size: Optional[Range] = None,
     ):
         """Create a copy of this creature with a set of changes."""
-        group_size = group_size if group_size is not None else self.group_size
-        groups_allowed = groups_allowed if groups_allowed is not None else self.groups_allowed
-        rarity = rarity if rarity is not None else self.rarity
-
-        return Creature(self.entity_id, group_size, self.active_periods, rarity, groups_allowed)
+        result = self.clone()
+        result.roup_size = group_size if group_size is not None else self.group_size
+        result.groups_allowed = groups_allowed if groups_allowed is not None else self.groups_allowed
+        result.rarity = rarity if rarity is not None else self.rarity
+        return result
 
     def with_active_periods(self, *active_periods: Iterable[Range]) -> Creature:
         """Create a new creature with a different set of activity periods."""
-        return Creature(self.entity_id, self.group_size, active_periods, self.rarity, self.groups_allowed)
+        result = self.clone()
+        result.active_periods = [r.clone() for r in active_periods]
+        return result
 
-    def with_group_size(self, lower: int, upper: int) -> Creature:
+    def with_group_size(self, lower: int = 1, upper: int = 1) -> Creature:
         """Return a new Creature with a different group size."""
-        return Creature(self.entity_id, Range(lower, upper), self.active_periods, self.rarity, self.groups_allowed)
+        result = self.clone()
+        result.group_size = Range(lower, upper)
+        return result
 
     def with_groups_allowed(self, groups_allowed: int) -> Creature:
         """Return a new creature with a different number of groups allowed."""
-        return Creature(self.entity_id, self.group_size, self.active_periods, self.rarity, groups_allowed)
+        result = self.clone()
+        result.groups_allowed = groups_allowed
+        return result
 
     def with_rarity(self, rarity: int) -> Creature:
         """Return a new Creature with a different rarity score."""
-        return Creature(self.entity_id, self.group_size, self.active_periods, rarity, self.groups_allowed)
+        result = self.clone()
+        result.rarity
+        return result
