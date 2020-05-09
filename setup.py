@@ -3,15 +3,22 @@
 import setuptools
 
 setuptools.setup(
-    name="oregen",
+    name="packconfig",
     version="1.0.0",
-    description="Code for generating TeamCOFH world generation files.",
+    description="A Python API for auto-generating config files for Minecraft modpacks.",
     author="Andrew Miner",
-    author_email="andrew@pinerylabs.com",
+    author_email="andrewminer@mac..com",
 
     packages=[
-        "pinerylabs",
-        "pinerylabs.oregen",
+        "packconfig",
+        "packconfig.mobgen",
+        "packconfig.mobgen.configs",
+        "packconfig.oregen",
+        "packconfig.oregen.configs",
+        "packconfig.oregen.data",
+        "packconfig.oregen.deposits",
+        "packconfig.oregen.distributions",
+        "packconfig.watchers",
     ],
     package_dir={"": "src"},
 

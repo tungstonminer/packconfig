@@ -247,7 +247,7 @@ class Build(object):
         if self.watch:
             self.shell(" ".join([
                 f"source {self.activate} &&",
-                f"{self.python} -m pinerylabs.watchers.watch_mobgen "
+                f"{self.python} -m packconfig.watchers.watch_mobgen "
                 f"{self.python} {self.src_dir} {self.target_dir} {self.stdin_path}",
             ]))
             return True
@@ -255,7 +255,7 @@ class Build(object):
             print(f"Generating config file to {self.target_dir}...")
             self.shell(" && ".join([
                 f"source {self.activate}",
-                f"{self.python} -m pinerylabs.mobgen.main {self.target_dir} {self.stdin_path}",
+                f"{self.python} -m packconfig.mobgen.main {self.target_dir} {self.stdin_path}",
             ]))
 
     def command_oregen(self):
@@ -269,7 +269,7 @@ class Build(object):
         if self.watch:
             self.shell(" ".join([
                 f"source {self.activate} &&",
-                f"{self.python} -m pinerylabs.watchers.watch_oregen "
+                f"{self.python} -m packconfig.watchers.watch_oregen "
                 f"{self.python} {self.src_dir} {self.target_dir} {self.stdin_path}",
             ]))
             return True
@@ -277,7 +277,7 @@ class Build(object):
             print(f"Generating config file to {self.target_dir}...")
             self.shell(" && ".join([
                 f"source {self.activate}",
-                f"{self.python} -m pinerylabs.oregen.main {self.target_dir} {self.stdin_path}",
+                f"{self.python} -m packconfig.oregen.main {self.target_dir} {self.stdin_path}",
             ]))
 
     def command_help(self, topic: str = None) -> bool:
@@ -325,7 +325,7 @@ class Build(object):
         subprocess.run(" && ".join([
             f"source {self.activate}",
             f"source {self.env_file}",
-            f"{self.python} -i {self.src_dir}/pinerylabs/apiserver/console.py",
+            f"{self.python} -i {self.src_dir}/packconfig/console.py",
         ]), shell=True)
         return True
 
@@ -336,7 +336,7 @@ class Build(object):
         setup = f"source {self.activate}"
         command = f"{self.mamba} run src"
         if self.watch:
-            command = f"{self.python} -m pinerylabs.watchers.watch_test {self.mamba} {self.src_dir}"
+            command = f"{self.python} -m packconfig.watchers.watch_test {self.mamba} {self.src_dir}"
 
         print("Executing tests...")
         return self.shell(f"{setup} && {command}")
