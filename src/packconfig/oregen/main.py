@@ -5,6 +5,7 @@ import sys
 
 from packconfig.oregen.configs import (
     ad_astra,
+    ad_astra_asteroids,
     # thermalfoundation_clathrates,
     # thermalfoundation_oil,
     # thermalfoundation_ores,
@@ -16,6 +17,7 @@ from packconfig.oregen.configs import (
 
 FILES = [
     ad_astra.config,
+    ad_astra_asteroids.config,
     # thermalfoundation_clathrates.config,
     # thermalfoundation_oil.config,
     # thermalfoundation_ores.config,

@@ -52,6 +52,10 @@ class Vein(object):
 
         return [o.as_json() for o in results]
 
+    def clone(self) -> Vein:
+        """Return a clone of this vein."""
+        return Vein(*self.ores.ores, material_ore=self.material_ore, name=self.name, purity=self.purity)
+
     def with_purity(self, purity) -> Vein:
         """Create a new vein with an indicated percentage of ores vs base material."""
         return Vein(*self.ores.ores, material_ore=self.material_ore, name=self.name, purity=purity)

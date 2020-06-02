@@ -69,7 +69,14 @@ class ConfigFile(object):
         print(json.dumps(self.as_json(), indent="    "))
 
     def write_file(self, target_dir: str):
-        """Write the contents of this config file to disk in the indicated directory."""
+        """
+        Write the contents of this config file to disk in the given target directory.
+
+        The target directory is assumed to be the `config` directory of a Minecraft profile. The actual config file will
+        be placed inside the `cofh/world/` directory.
+        """
+        target_dir = os.path.join(target_dir, "cofh", "world")
+        os.makedirs(target_dir, exist_ok=True)
         with FileIO(os.path.join(target_dir, self.file_name), "w") as f:
             text = json.dumps(self.as_json(), indent="    ")
             f.write(text.encode("utf-8"))

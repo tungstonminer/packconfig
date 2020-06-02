@@ -36,6 +36,12 @@ class Quantity(object):
         """Generate a random value within the range allowed by this quantity."""
         return self.minimum + random.randfloat(0, self.variance)
 
+    # Magic Methods ################################################################################
+
+    def __repr__(self) -> str:
+        """Create a string representation of this quantity."""
+        return f"{self.minimum}–{self.minimum + self.variance}"
+
 
 ########################################################################################################################
 
