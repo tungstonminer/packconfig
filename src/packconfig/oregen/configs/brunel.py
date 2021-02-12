@@ -220,7 +220,9 @@ with config as c:
             add_biome_standard(c, Vein(zinc_ore), None, Vein(emerald_ore), None)
 
         with c.biomes(mesa_biomes):
-            add_biome_standard(c, Vein(gold_ore.weighted(75), stone.weighted(25)), None, None, Vein(granite))
+            metal_vein = Vein(gold_ore.weighted(75), stone.weighted(25))
+            add_biome_standard(c, metal_vein, None, None, Vein(granite))
+            c.add(mountain_gradient.with_template(ClusterDeposit(metal_vein)))
 
         with c.biomes(desert_biomes):
             g = Gradient(
