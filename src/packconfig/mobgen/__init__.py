@@ -2,10 +2,9 @@
 
 from .biome_set import BiomeSet
 from .loot import Loot
-from .range import Range
 
-from .creature import Creature  # uses Loot, Range
-from .location import Location  # uses BiomeSet, Range
+from .creature import Creature  # uses Loot
+from .location import Location  # uses BiomeSet
 
 from .spawn import Spawn  # uses Creature, Location
 
@@ -29,7 +28,6 @@ __all__ = [
     "Loot",
     "LootFile",
     "MobConfigFile",
-    "Range",
     "PotentialSpawnFile",
     "Spawn",
     "SpawnBuilder",

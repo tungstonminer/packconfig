@@ -1,6 +1,6 @@
 """Define various ores from the Chisel mod."""
 
-from packconfig.oregen import Ore, Vein
+from packconfig.oregen import Ore
 
 
 # Ores #################################################################################################################
@@ -8,9 +8,3 @@ from packconfig.oregen import Ore, Vein
 basalt = Ore("chisel:basalt2", 7)
 limestone = Ore("chisel:limestone2", 7)
 marble = Ore("chisel:marble2", 7)
-
-# Veins#################################################################################################################
-
-basalt_vein = Vein(basalt)
-limestone_vein = Vein(limestone)
-marble_vein = Vein(marble)

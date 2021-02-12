@@ -2,7 +2,8 @@
 
 from typing import Iterable, Optional
 
-from packconfig.mobgen import Creature, Location, Range
+from packconfig import Range
+from packconfig.mobgen import Creature, Location
 
 
 ########################################################################################################################
@@ -44,11 +45,11 @@ class Spawn(object):
 
         """
         self.altitude = altitude
-        self.location = location
         self.creatures = creatures
+        self.cycle_length = cycle_length if cycle_length is not None else DEFAULT_CYCLE_LENGTH
         self.light = light
         self.limit = limit
-        self.cycle_length = cycle_length if cycle_length is not None else DEFAULT_CYCLE_LENGTH
+        self.location = location
 
         if self.altitude is None:
             self.altitude = Range(0, 256)

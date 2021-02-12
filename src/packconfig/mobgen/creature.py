@@ -3,7 +3,8 @@ from __future__ import annotations
 
 from typing import Iterable, Optional
 
-from packconfig.mobgen import Loot, Range
+from packconfig import Range
+from packconfig.mobgen import Loot
 
 
 ########################################################################################################################
@@ -90,7 +91,7 @@ class Creature(object):
     ):
         """Create a copy of this creature with a set of changes."""
         result = self.clone()
-        result.roup_size = group_size if group_size is not None else self.group_size
+        result.group_size = group_size if group_size is not None else self.group_size
         result.groups_allowed = groups_allowed if groups_allowed is not None else self.groups_allowed
         result.rarity = rarity if rarity is not None else self.rarity
         return result

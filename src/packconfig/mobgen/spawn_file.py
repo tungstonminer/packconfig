@@ -3,7 +3,8 @@
 from collections import namedtuple
 from typing import Any, Dict, Iterable, List
 
-from packconfig.mobgen import BiomeSet, Creature, MobConfigFile, Range, Spawn
+from packconfig import Range
+from packconfig.mobgen import BiomeSet, Creature, MobConfigFile, Spawn
 from packconfig.mobgen.spawn import FILLER_MOB
 
 ########################################################################################################################
@@ -50,6 +51,7 @@ class SpawnFile(MobConfigFile):
                 for period in creature.active_periods:
                     rule = {
                         "mob": creature.entity_id,
+                        "dimension": spawn.location.dimension,
                         "biome": list(n for n in spawn.location.biomes.names),
                         "blocks": list(b.name for b in spawn.location.biomes.blocks.ores),
                         "structure": spawn.location.structure,
@@ -68,6 +70,9 @@ class SpawnFile(MobConfigFile):
 
                     if spawn.location.biomes is BiomeSet.ANY:
                         del rule["biome"]
+
+                    if rule["dimension"] is None:
+                        del rule["dimension"]
 
                     if rule["structure"] is None:
                         del rule["structure"]
@@ -98,7 +103,8 @@ class SpawnFile(MobConfigFile):
 
             rule = {
                 "mob": [c.entity_id for c in spawn.creatures],
-                "biomes": list(spawn.location.biomes.names),
+                "dimension": spawn.location.dimension,
+                "biome": list(spawn.location.biomes.names),
                 "structure": spawn.location.structure,
                 "mincount": {
                     "amount": spawn.limit,
@@ -109,7 +115,10 @@ class SpawnFile(MobConfigFile):
             }
 
             if spawn.location.biomes is BiomeSet.ANY:
-                del rule["biomes"]
+                del rule["biome"]
+
+            if rule["dimension"] is None:
+                del rule["dimension"]
 
             if rule["structure"] is None:
                 del rule["structure"]
@@ -136,14 +145,14 @@ class SpawnFile(MobConfigFile):
         spawn: Spawn = None
         for spawn in self.prohibitions:
             rule = {
-                "biomes": list(spawn.location.biomes.names),
+                "biome": list(spawn.location.biomes.names),
                 "structure": spawn.location.structure,
                 "mob": [c.entity_id for c in spawn.creatures],
                 "result": "deny",
             }
 
             if spawn.location.biomes is BiomeSet.ANY:
-                del rule["biomes"]
+                del rule["biome"]
 
             if rule["structure"] is None:
                 del rule["structure"]

@@ -61,6 +61,7 @@ class PotentialSpawnFile(MobConfigFile):
                 print(f"invalid spawn: {spawn.location.biomes}")
 
             entry = {
+                "dimension": spawn.location.dimension,
                 "biome": list(spawn.location.biomes.names),
                 "structure": spawn.location.structure,
                 "block": [b.name for b in spawn.location.biomes.blocks.ores],
@@ -73,6 +74,9 @@ class PotentialSpawnFile(MobConfigFile):
 
             if spawn.location.biomes is BiomeSet.ANY:
                 del entry["biome"]
+
+            if entry["dimension"] is None:
+                del entry["dimension"]
 
             if entry["minheight"] == 0:
                 del entry["minheight"]

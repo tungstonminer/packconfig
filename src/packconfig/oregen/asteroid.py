@@ -38,6 +38,15 @@ class Asteroid(object):
         self.weight = weight
         self.vein = vein
 
+    # Properties ###################################################################################
+
+    @property
+    def time_multiplier(self):
+        """Get the multiplier on how long it will take to mine this particular asteriod."""
+        total_time = (self.distance * 10) + ((self.mass.minimum + (0.5 * self.mass.variance)) * 1.5)
+        base_time = 15.0 * 60
+        return total_time / base_time
+
     # Public Methods ###############################################################################
 
     def as_xml(self, document: Document) -> Node:
@@ -51,6 +60,7 @@ class Asteroid(object):
         node.setAttribute("probability", str(self.weight / 100.0))
         node.setAttribute("richness", str(self.vein.purity))
         node.setAttribute("richnessVariability", "0.25")
+        node.setAttribute("timeMultiplier", f"{self.time_multiplier:0.3f}")
 
         ore: Ore = None
         for ore in self.vein.ores.ores:

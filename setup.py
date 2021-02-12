@@ -23,5 +23,6 @@ setuptools.setup(
     package_dir={"": "src"},
 
     install_requires=[
+        "inflection~=0.5.0"
     ],
 )

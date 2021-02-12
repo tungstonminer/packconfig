@@ -1,6 +1,7 @@
 """Define the entity generation settings for Ad Astra."""
 
-from packconfig.mobgen import BiomeSet, ConfigFileSet, Creature, Location, Loot, Range, SpawnBuilder
+from packconfig import Range
+from packconfig.mobgen import BiomeSet, ConfigFileSet, Creature, Location, Loot, SpawnBuilder
 from packconfig.oregen import Ore, OreList
 from packconfig.oregen.data import vanilla as mc
 
@@ -292,7 +293,7 @@ ghast = Creature("minecraft:ghast", LONER, loot_list=ghast_loot)
 gilamonster = Creature("zawa:gilamonster", LONER, loot_list=reptile_venomous_loot)
 giraffe = Creature("zawa:reticulatedgiraffe", HERD, loot_list=giraffe_loot)
 gorilla = Creature("zawa:westernlowlandgorilla", TROOP, loot_list=gorilla_loot)
-grottol = Creature("mowziesmobs:grottol", CLUSTER, loot_list=[Loot("1", diamond, diamond, diamond, emerald)])
+grottol = Creature("mowziesmobs:grottol", CLUSTER)
 hippo_nile = Creature("zawa:nilehippopotamus", TROOP, loot_list=cow_fatty_loot)
 hippo_pygmy = Creature("zawa:pygmyhippopotamus", PAIR, loot_list=cow_fatty_loot)
 horse = Creature("horse_colors:horse_felinoid", HERD, loot_list=horse_loot)
@@ -717,14 +718,14 @@ with b.location(Location(swamp)):
         with b.spawn(64, 15):
             b.add(alligator.configure(10, 4))
             b.add(platypus.configure(10, 5))
-            b.add(slime.configure(1, 3))
 
     with b.active_periods(NIGHT):
-        with b.spawn(96, 15):
+        with b.spawn(64, 15):
             b.add(alligator.configure(25, 4))
             b.add(slime.configure(20, 3))
             b.add(hippo_nile.configure(20, 1))
             b.add(anaconda.configure(2, 2))
+            b.add(slime.configure(1, 3))
             b.add(jaguar.configure(1, 1))
 
     with b.active_periods(TWILIGHT):
@@ -776,7 +777,7 @@ with b.location(Location(BiomeSet.merge(taiga, taiga_snowy))):
 with b.location(Location(the_end)):
     with b.active_periods(ANY):
         with b.spawn(64, 30):
-            b.add(enderman.configure(20, 10))
+            b.add(enderman.configure(100, 20, Range(1, 4)))
 
 with b.location(Location(tundra)):
     with b.active_periods(DAY):
@@ -799,7 +800,7 @@ with b.location(Location(tundra, weather="thunder")):
         with b.spawn(16, 45):
             b.add(blizz.configure(20, 4))
 
-with b.location(Location(BiomeSet.ANY)):
+with b.location(Location(earth)):
     with b.active_periods([Range(17000, 19000)]):
         with b.spawn(2, 300):
             b.add(enderman.configure(1, 1))

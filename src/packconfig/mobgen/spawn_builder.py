@@ -4,7 +4,8 @@ from __future__ import annotations
 from contextlib import contextmanager
 from typing import Iterable, Optional
 
-from packconfig.mobgen import Creature, Location, Range, Spawn
+from packconfig import Range
+from packconfig.mobgen import Creature, Location, Spawn
 
 
 ########################################################################################################################

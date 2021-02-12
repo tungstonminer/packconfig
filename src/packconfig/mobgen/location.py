@@ -2,7 +2,8 @@
 
 from typing import Optional
 
-from packconfig.mobgen import BiomeSet, Range
+from packconfig import Range
+from packconfig.mobgen import BiomeSet
 
 
 ########################################################################################################################
