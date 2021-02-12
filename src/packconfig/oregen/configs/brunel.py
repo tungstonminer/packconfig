@@ -228,11 +228,13 @@ with config as c:
                 Sweep("max_height", 8, 32), Sweep("min_height", 0, 26),
                 Sweep("purity", 100, 1), Sweep("cluster_size", 32, 1),
             )
-            c.add(g.with_template(ClusterDeposit(Vein(netherrack))))
+            vein = Vein(netherrack.weighted(999), mc.lava.weighted(1))
+            c.add(g.with_template(ClusterDeposit(vein)))
 
             with c.distribution(desert_nether_band):
                 c.add(ClusterDeposit(Vein(quartz_ore, material_ore=netherrack, purity=2.0)))
                 c.add(CaveDeposit(Vein(glowstone), cluster_count=4))
+                c.add(CaveDeposit(Vein(soul_sand), ceiling=False, cluster_count=16))
 
         with c.biomes(any_biomes):
             with c.distribution(lava_band):
