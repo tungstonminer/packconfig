@@ -104,9 +104,10 @@ bottle_o_enchanting = "minecraft:experience_bottle"
 carcass_chicken = "minecraft:chicken"
 carcass_chicken_prime = "animania:raw_prime_chicken"
 carcass_clownfish = "minecraft:fish:2"
-# carcass_crab = "betteranimalsplus:crab_meat_raw"
-carcass_crab = "harvestcraft:crabrawitem"
-carcass_eel = "harvestcraft:eelrawitem"
+carcass_crab1 = "betteranimalsplus:crab_meat_raw"
+carcass_crab2 = "harvestcraft:crabrawitem"
+carcass_eel1 = "betteranimalsplus:eel_meat_raw"
+carcass_eel2 = "harvestcraft:eelrawitem"
 carcass_fish = "minecraft:fish"
 carcass_frog = "harvestcraft:frograwitem"
 carcass_octopus = "harvestcraft:octopusrawitem"
@@ -186,11 +187,13 @@ wool = "minecraft:wool"
 
 # Loot Lists ###########################################################################################################
 
+default_loot = None
+no_loot = []
 bear_black_loot = [Loot("1-2", meat_beef), Loot("1-2", fur_black), Loot("1-2", bone), Loot("0-1", bearhead_brown)]
 bear_brown_loot = [Loot("1-2", meat_beef), Loot("1-2", fur_brown), Loot("1-2", bone), Loot("0-1", bearhead_black)]
 bear_polar_loot = [Loot("1-2", meat_beef), Loot("1-2", fur_white), Loot("1-2", bone), Loot("0-1", bearhead_polar)]
-bird_raptor_loot = []
-bird_tiny_loot = []
+bird_raptor_loot = [default_loot]
+bird_tiny_loot = [default_loot]
 blaze_loot = [Loot("1-3", blaze_rod), Loot("1-3", blaze_powder)]
 boar_loot = [Loot("2-4", meat_pork), Loot("1-2", hide_large)]
 bovine_bull_loot = [Loot("1-2", meat_beef_prime), Loot("2-3", hide_large), Loot("2-3", bone)]
@@ -201,81 +204,118 @@ bovine_cow_mooshroom_loot = [Loot("1-2", meat_beef), Loot("0-1", hide_large), Lo
 bovine_calf_mooshroom_loot = [Loot("0-1", meat_beef), Loot("0-1", hide_small), Loot("0-1"), mushroom_item]
 chicken_rooster_loot = [Loot("1-2", carcass_chicken_prime), Loot("1-2", feather_chicken_white), Loot("0-1", bone)]
 chicken_hen_loot = [Loot("1-2", carcass_chicken), Loot("0-1", feather_chicken_white), Loot("0-1", bone)]
-chicken_chick_loot = []
-crab_loot = [Loot("1-2", carcass_crab), Loot("0-1", bone_meal)]
+chicken_chick_loot = [default_loot]
+coyote_loot = [default_loot]
+crab_loot = [Loot("1-2", carcass_crab2), Loot("0-1", bone_meal)]
 creeper_loot = [Loot("2-4", gunpowder)]
+deer_loot = [default_loot]
 donkey_loot = [Loot("1", hide_large), Loot("1", bone)]
-default_loot = None
-eel_loot = []
+eel_freshwater_loot = [Loot("1-2", carcass_eel1)]
+eel_saltwater_loot = [Loot("1-2", carcass_eel2)]
 enderman_loot = [Loot("1-2", ender_pearl)]
-equine_loot = []
+equine_loot = [default_loot]
+evocation_illager_loot = [default_loot]
+feralwolf_loot = [default_loot]
 ferret_loot = [Loot("1", hide_small)]
-fish_small_loot = []
-fish_large_loot = []
-foliaath_loot = []
+fish_small_loot = [default_loot]
+fish_large_loot = [default_loot]
+foliaath_loot = [default_loot]
+foliaath_baby_loot = [default_loot]
 fox_loot = [Loot("1", hide_small)]
 frog_loot = [Loot("1", meat_frog)]
-ghast_loot = []
+frostmaw_loot = [default_loot]
+ghast_loot = [default_loot]
 goat_buck_loot = [Loot("1-2", meat_chevon_prime), Loot("1-2", hide_small)]
 goat_doe_loot = [Loot("1-2", meat_chevon), Loot("1", hide_small)]
 goat_kid_loot = [Loot("0-1", hide_small)]
-goose_loot = []
+goose_loot = [default_loot]
+grottol_loot = [default_loot]
+hamster_loot = [default_loot]
+hedgehog_loot = [default_loot]
 hirschgeist_loot = [Loot("1", hirschgeist_skull), Loot("2-3", bone)]
+husk_loot = [default_loot]
 horse_loot = [Loot("1", meat_horse), Loot("0-1", bone)]
 horse_stallion_loot = [Loot("2-3", meat_horse), Loot("1-2", bone)]
 horse_mare_loot = [Loot("1-2", meat_horse), Loot("0-1", bone)]
-horse_foal_loot = []
-horseshoecrab_loot = []
-jellyfish_loot = []
-lantern_loot = []
-large_fish_loot = []
+horse_foal_loot = [default_loot]
+horseshoecrab_loot = [Loot("1-2", carcass_crab1), Loot("0-1", bone_meal)]
+illusion_illager_loot = [default_loot]
+jellyfish_loot = [default_loot]
+lammergeier_loot = [default_loot]
+lamprey_loot = [default_loot]
+lantern_loot = [default_loot]
+large_fish_loot = [default_loot]
 llama_loot = [Loot("1-2", wool), Loot("1-2", bone)]
-magma_cube_loot = []
-mammal_huge_loot = []
-mammal_medium_loot = []
+magma_cube_loot = [default_loot]
+mammal_huge_loot = [default_loot]
+mammal_medium_loot = [default_loot]
 mammal_small_loot = [Loot("1", meat_chevon)]
+moose_loot = [default_loot]
 mule_loot = [Loot("1-2", hide_large), Loot("1-2", meat_horse), Loot("1-2", bone)]
-naga_loot = []
-nautilus_loot = []
-no_loot = []
-ocelot_loot = []
+naga_loot = [default_loot]
+nautilus_loot = [default_loot]
+ocelot_loot = [default_loot]
 octopus_loot = [Loot("1-2", carcass_octopus), Loot("0-2", ink_sac)]
-peafowl_blue_chick_loot = []
+parrot_loot =[default_loot]
+peafowl_blue_chick_loot = [default_loot]
 peafowl_blue_hen_loot = [Loot("1-2", carcass_peacock)]
 peafowl_blue_cock_loot = [Loot("1-2", carcass_peacock_prime), Loot("1-2", feather_peacock_blue)]
-peafowl_charcoal_chick_loot = []
+peafowl_charcoal_chick_loot = [default_loot]
 peafowl_charcoal_hen_loot = [Loot("1-2", carcass_peacock)]
 peafowl_charcoal_cock_loot = [Loot("1-2", carcass_peacock_prime), Loot("1-2", feather_peacock_charcoal)]
-peafowl_opal_chick_loot = []
+peafowl_opal_chick_loot = [default_loot]
 peafowl_opal_hen_loot = [Loot("1-2", carcass_peacock)]
 peafowl_opal_cock_loot = [Loot("1-2", carcass_peacock_prime), Loot("1-2", feather_peacock_opal)]
-peafowl_peach_chick_loot = []
+peafowl_peach_chick_loot = [default_loot]
 peafowl_peach_hen_loot = [Loot("1-2", carcass_peacock)]
 peafowl_peach_cock_loot = [Loot("1-2", carcass_peacock_prime), Loot("1-2", feather_peacock_peach)]
-peafowl_purple_chick_loot = []
+peafowl_purple_chick_loot = [default_loot]
 peafowl_purple_hen_loot = [Loot("1-2", carcass_peacock)]
 peafowl_purple_cock_loot = [Loot("1-2", carcass_peacock_prime), Loot("1-2", feather_peacock_purple)]
-peafowl_taupe_chick_loot = []
+peafowl_taupe_chick_loot = [default_loot]
 peafowl_taupe_hen_loot = [Loot("1-2", carcass_peacock)]
 peafowl_taupe_cock_loot = [Loot("1-2", carcass_peacock_prime), Loot("1-2", feather_peacock_taupe)]
-peafowl_white_chick_loot = []
+peafowl_white_chick_loot = [default_loot]
 peafowl_white_hen_loot = [Loot("1-2", carcass_peacock)]
 peafowl_white_cock_loot = [Loot("1-2", carcass_peacock_prime), Loot("1-2", feather_peacock_white)]
+pheasant_loot = [Loot("1-2", carcass_pheasant)]
 porcine_hog_loot = [Loot("1-2", meat_pork_prime), Loot("0-1", meat_bacon)]
 porcine_sow_loot = [Loot("1-2", meat_pork)]
-porcine_piglet_loot = []
+porcine_piglet_loot = [default_loot]
 rabbit_buck_loot = [Loot("1", carcass_rabbit_prime), Loot("1-2", rabbit_foot), Loot("1-2", hide_small)]
 rabbit_doe_loot = [Loot("1", carcass_rabbit), Loot("0-1", rabbit_foot), Loot("0-1", hide_small)]
-rabbit_kit_loot = []
+rabbit_kit_loot = [default_loot]
 reindeer_loot = [Loot("1-2", meat_venison), Loot("0-2", antler)]
+shark_loot = [default_loot]
 sheep_ewe_loot = [Loot("1-2", meat_mutton), Loot("1-2", wool)]
-sheep_lamb_loot = []
+sheep_lamb_loot = [default_loot]
 sheep_ram_loot = [Loot("1-2", meat_mutton_prime), Loot("1-3", wool)]
+shulker_loot = [default_loot]
+silverfish_loot = [default_loot]
+skeleton_loot = [default_loot]
+skeleton_horse_loot = [default_loot]
+slime_loot = [default_loot]
 snowman_loot = [Loot("8-12", snowball)]
 spider_loot = [Loot("1-4", spider_eye)]
 squid_loot = [Loot("1", carcass_squid), Loot("1-2", ink_sac)]
+squirrel_loot = [default_loot]
+stray_loot = [default_loot]
 turkey_loot = [Loot("1", turkey_meat), Loot("1-2", meat_turkey_leg), Loot("1-2", feather_chicken_white)]
-wolf_loot = []
+vex_loot = [default_loot]
+villager_loot = [default_loot]
+villager_golem_loot = [default_loot]
+vindication_illager_loot = [default_loot]
+walrus_loot = [default_loot]
+whale_loot = [default_loot]
+witch_loot = [default_loot]
+wither_loot = [default_loot]
+wither_skeleton_loot = [default_loot]
+wolf_loot = [default_loot]
+zombie_loot = [default_loot]
+zombie_horse_loot = [default_loot]
+zombie_pigman_loot = [default_loot]
+zombie_villager_loot = [default_loot]
+zotzpyre_loot = [default_loot]
 
 # Entities #############################################################################################################
 
@@ -318,11 +358,11 @@ calf_jersey = Creature("animania:calf_jersey", CLUSTER, loot_list=bovine_calf_lo
 calf_longhorn = Creature("animania:calf_longhorn", CLUSTER, loot_list=bovine_calf_loot)
 calf_mooshroom = Creature("animania:calf_mooshroom", CLUSTER, loot_list=bovine_calf_mooshroom_loot)
 cave_spider = Creature("minecraft:cave_spider", Loot, loot_list=spider_loot)
-chick_leghorn = Creature("animania:chick_leghorn", TROOP, loot_list=default_loot)
-chick_orpington = Creature("animania:chick_orpington", TROOP, loot_list=default_loot)
-chick_plymouth_rock = Creature("animania:chick_plymouth_rock", TROOP, loot_list=default_loot)
-chick_rhode_island_red = Creature("animania:chick_rhode_island_red", TROOP, loot_list=default_loot)
-chick_wyandotte = Creature("animania:chick_wyandotte", TROOP, loot_list=default_loot)
+chick_leghorn = Creature("animania:chick_leghorn", TROOP, loot_list=chicken_chick_loot)
+chick_orpington = Creature("animania:chick_orpington", TROOP, loot_list=chicken_chick_loot)
+chick_plymouth_rock = Creature("animania:chick_plymouth_rock", TROOP, loot_list=chicken_chick_loot)
+chick_rhode_island_red = Creature("animania:chick_rhode_island_red", TROOP, loot_list=chicken_chick_loot)
+chick_wyandotte = Creature("animania:chick_wyandotte", TROOP, loot_list=chicken_chick_loot)
 # #chicken = Creature("minecraft:chicken", CLUSTER, loot_list=default_loot)
 # #cow = Creature("minecraft:cow", CLUSTER, loot_list=default_loot)
 cow_angus = Creature("animania:cow_angus", CLUSTER, loot_list=bovine_cow_loot)
@@ -333,11 +373,11 @@ cow_holstein = Creature("animania:cow_holstein", CLUSTER, loot_list=bovine_cow_l
 cow_jersey = Creature("animania:cow_jersey", CLUSTER, loot_list=bovine_cow_loot)
 cow_longhorn = Creature("animania:cow_longhorn", CLUSTER, loot_list=bovine_cow_loot)
 cow_mooshroom = Creature("animania:cow_mooshroom", CLUSTER, loot_list=bovine_calf_mooshroom_loot)
-coyote = Creature("betteranimalsplus:coyote", CLUSTER, loot_list=default_loot)
+coyote = Creature("betteranimalsplus:coyote", CLUSTER, loot_list=coyote_loot)
 crab = Creature("betteranimalsplus:crab", PAIR, loot_list=crab_loot)
 creeper = Creature("minecraft:creeper", LONER, loot_list=creeper_loot)
 dartfrog = Creature("animania:dartfrog", PAIR, loot_list=frog_loot)
-deer = Creature("betteranimalsplus:deer", CLUSTER, loot_list=default_loot)
+deer = Creature("betteranimalsplus:deer", CLUSTER, loot_list=deer_loot)
 doe_alpine = Creature("animania:doe_alpine", TROOP, loot_list=goat_doe_loot)  # goat
 doe_angora = Creature("animania:doe_angora", TROOP, loot_list=goat_doe_loot)  # goat
 doe_chinchilla = Creature("animania:doe_chinchilla", HERD, loot_list=rabbit_doe_loot)  # rabbit
@@ -354,31 +394,31 @@ doe_nigerian_dwarf = Creature("animania:doe_nigerian_dwarf", TROOP, loot_list=go
 doe_pygmy = Creature("animania:doe_pygmy", TROOP, loot_list=goat_doe_loot)  # goat
 doe_rex = Creature("animania:doe_rex", HERD, loot_list=rabbit_doe_loot)  # rabbit
 donkey = Creature("horse_colors:donkey", TROOP, loot_list=donkey_loot)
-eel_freshwater = Creature("betteranimalsplus:eel_freshwater", CLUSTER, loot_list=default_loot)
-eel_saltwater = Creature("betteranimalsplus:eel_saltwater", CLUSTER, loot_list=default_loot)
+eel_freshwater = Creature("betteranimalsplus:eel_freshwater", CLUSTER, loot_list=eel_freshwater_loot)
+eel_saltwater = Creature("betteranimalsplus:eel_saltwater", CLUSTER, loot_list=eel_saltwater_loot)
 enderman = Creature("minecraft:enderman", LONER, loot_list=enderman_loot)
-evocation_illager = Creature("minecraft:evocation_illager", CLUSTER, loot_list=default_loot)
+evocation_illager = Creature("minecraft:evocation_illager", CLUSTER, loot_list=evocation_illager_loot)
 ewe_dorper = Creature("animania:ewe_dorper", HERD, loot_list=sheep_ewe_loot)
 ewe_dorset = Creature("animania:ewe_dorset", HERD, loot_list=sheep_ewe_loot)
 ewe_friesian = Creature("animania:ewe_friesian", HERD, loot_list=sheep_ewe_loot)
 ewe_jacob = Creature("animania:ewe_jacob", HERD, loot_list=sheep_ewe_loot)
 ewe_merino = Creature("animania:ewe_merino", HERD, loot_list=sheep_ewe_loot)
 ewe_suffolk = Creature("animania:ewe_suffolk", HERD, loot_list=sheep_ewe_loot)
-feralwolf = Creature("betteranimalsplus:feralwolf", CLUSTER, loot_list=default_loot)
+feralwolf = Creature("betteranimalsplus:feralwolf", CLUSTER, loot_list=feralwolf_loot)
 ferret_grey = Creature("animania:ferret_grey", CLUSTER, loot_list=ferret_loot)
 ferret_white = Creature("animania:ferret_white", CLUSTER, loot_list=ferret_loot)
-foal_draft = Creature("animania:foal_draft", CLUSTER, loot_list=default_loot)
-foliaath = Creature("mowziesmobs:foliaath", LONER, loot_list=default_loot)
-foliaath_baby = Creature("mowziesmobs:baby_foliaath", LONER, loot_list=default_loot)
+foal_draft = Creature("animania:foal_draft", CLUSTER, loot_list=horse_foal_loot)
+foliaath = Creature("mowziesmobs:foliaath", LONER, loot_list=foliaath_loot)
+foliaath_baby = Creature("mowziesmobs:baby_foliaath", LONER, loot_list=foliaath_baby_loot)
 fox = Creature("betteranimalsplus:fox", CLUSTER, loot_list=fox_loot)
 frog = Creature("animania:frog", PAIR, loot_list=frog_loot)
-frostmaw = Creature("mowziesmobs:frostmaw", LONER, loot_list=default_loot)
-ghast = Creature("minecraft:ghast", LONER, loot_list=default_loot)
-goose = Creature("betteranimalsplus:goose", CLUSTER, loot_list=default_loot)
-grottol = Creature("mowziesmobs:grottol", CLUSTER, loot_list=default_loot)
-hamster = Creature("animania:hamster", CLUSTER, loot_list=default_loot)
-hedgehog = Creature("animania:hedgehog", CLUSTER, loot_list=default_loot)
-hedgehog_albino = Creature("animania:hedgehog_albino", CLUSTER, loot_list=default_loot)
+frostmaw = Creature("mowziesmobs:frostmaw", LONER, loot_list=frostmaw_loot)
+ghast = Creature("minecraft:ghast", LONER, loot_list=ghast_loot)
+goose = Creature("betteranimalsplus:goose", CLUSTER, loot_list=goose_loot)
+grottol = Creature("mowziesmobs:grottol", CLUSTER, loot_list=grottol_loot)
+hamster = Creature("animania:hamster", CLUSTER, loot_list=hamster_loot)
+hedgehog = Creature("animania:hedgehog", CLUSTER, loot_list=hedgehog_loot)
+hedgehog_albino = Creature("animania:hedgehog_albino", CLUSTER, loot_list=hedgehog_loot)
 hen_leghorn = Creature("animania:hen_leghorn", TROOP, loot_list=chicken_hen_loot)
 hen_orpington = Creature("animania:hen_orpington", TROOP, loot_list=chicken_hen_loot)
 hen_plymouth_rock = Creature("animania:hen_plymouth_rock", TROOP, loot_list=chicken_hen_loot)
@@ -392,10 +432,10 @@ hog_large_white = Creature("animania:hog_large_white", CLUSTER, loot_list=porcin
 hog_old_spot = Creature("animania:hog_old_spot", CLUSTER, loot_list=porcine_hog_loot)
 hog_yorkshire = Creature("animania:hog_yorkshire", CLUSTER, loot_list=porcine_hog_loot)
 horse = Creature("horse_colors:horse_felinoid", TROOP, loot_list=horse_loot)
-horseshoecrab = Creature("betteranimalsplus:horseshoecrab", PAIR, loot_list=crab_loot)
-husk = Creature("minecraft:husk", LONER, loot_list=default_loot)
-illusion_illager = Creature("minecraft:illusion_illager", LONER, loot_list=default_loot)
-jellyfish = Creature("betteranimalsplus:jellyfish", CLUSTER, loot_list=default_loot)
+horseshoecrab = Creature("betteranimalsplus:horseshoecrab", PAIR, loot_list=horseshoecrab_loot)
+husk = Creature("minecraft:husk", LONER, loot_list=husk_loot)
+illusion_illager = Creature("minecraft:illusion_illager", LONER, loot_list=illusion_illager_loot)
+jellyfish = Creature("betteranimalsplus:jellyfish", CLUSTER, loot_list=jellyfish_loot)
 kid_alpine = Creature("animania:kid_alpine", TROOP, loot_list=goat_kid_loot)  # goat
 kid_angora = Creature("animania:kid_angora", TROOP, loot_list=goat_kid_loot)  # goat
 kid_fainting = Creature("animania:kid_fainting", TROOP, loot_list=goat_kid_loot)  # goat
@@ -403,40 +443,40 @@ kid_kiko = Creature("animania:kid_kiko", TROOP, loot_list=goat_kid_loot)  # goat
 kid_kinder = Creature("animania:kid_kinder", TROOP, loot_list=goat_kid_loot)  # goat
 kid_nigerian_dwarf = Creature("animania:kid_nigerian_dwarf", TROOP, loot_list=goat_kid_loot)  # goat
 kid_pygmy = Creature("animania:kid_pygmy", TROOP, loot_list=goat_kid_loot)  # goat
-kit_chinchilla = Creature("animania:kit_chinchilla", HERD, loot_list=default_loot)  # rabbit
-kit_cottontail = Creature("animania:kit_cottontail", HERD, loot_list=default_loot)  # rabbit
-kit_dutch = Creature("animania:kit_dutch", HERD, loot_list=default_loot)  # rabbit
-kit_havana = Creature("animania:kit_havana", HERD, loot_list=default_loot)  # rabbit
-kit_jack = Creature("animania:kit_jack", HERD, loot_list=default_loot)  # rabbit
-kit_lop = Creature("animania:kit_lop", HERD, loot_list=default_loot)  # rabbit
-kit_new_zealand = Creature("animania:kit_new_zealand", HERD, loot_list=default_loot)  # rabbit
-kit_rex = Creature("animania:kit_rex", HERD, loot_list=default_loot)  # rabbit
-lamb_dorper = Creature("animania:lamb_dorper", HERD, loot_list=default_loot)
-lamb_dorset = Creature("animania:lamb_dorset", HERD, loot_list=default_loot)
-lamb_friesian = Creature("animania:lamb_friesian", HERD, loot_list=default_loot)
-lamb_jacob = Creature("animania:lamb_jacob", HERD, loot_list=default_loot)
-lamb_merino = Creature("animania:lamb_merino", HERD, loot_list=default_loot)
-lamb_suffolk = Creature("animania:lamb_suffolk", HERD, loot_list=default_loot)
-lammergeier = Creature("betteranimalsplus:lammergeier", CLUSTER, loot_list=default_loot)
-lamprey = Creature("betteranimalsplus:lamprey", LONER, loot_list=default_loot)
-lantern = Creature("mowziesmobs:lantern", CLUSTER, loot_list=default_loot)
+kit_chinchilla = Creature("animania:kit_chinchilla", HERD, loot_list=rabbit_kit_loot)  # rabbit
+kit_cottontail = Creature("animania:kit_cottontail", HERD, loot_list=rabbit_kit_loot)  # rabbit
+kit_dutch = Creature("animania:kit_dutch", HERD, loot_list=rabbit_kit_loot)  # rabbit
+kit_havana = Creature("animania:kit_havana", HERD, loot_list=rabbit_kit_loot)  # rabbit
+kit_jack = Creature("animania:kit_jack", HERD, loot_list=rabbit_kit_loot)  # rabbit
+kit_lop = Creature("animania:kit_lop", HERD, loot_list=rabbit_kit_loot)  # rabbit
+kit_new_zealand = Creature("animania:kit_new_zealand", HERD, loot_list=rabbit_kit_loot)  # rabbit
+kit_rex = Creature("animania:kit_rex", HERD, loot_list=rabbit_kit_loot)  # rabbit
+lamb_dorper = Creature("animania:lamb_dorper", HERD, loot_list=sheep_lamb_loot)
+lamb_dorset = Creature("animania:lamb_dorset", HERD, loot_list=sheep_lamb_loot)
+lamb_friesian = Creature("animania:lamb_friesian", HERD, loot_list=sheep_lamb_loot)
+lamb_jacob = Creature("animania:lamb_jacob", HERD, loot_list=sheep_lamb_loot)
+lamb_merino = Creature("animania:lamb_merino", HERD, loot_list=sheep_lamb_loot)
+lamb_suffolk = Creature("animania:lamb_suffolk", HERD, loot_list=sheep_lamb_loot)
+lammergeier = Creature("betteranimalsplus:lammergeier", CLUSTER, loot_list=lammergeier_loot)
+lamprey = Creature("betteranimalsplus:lamprey", LONER, loot_list=lamprey_loot)
+lantern = Creature("mowziesmobs:lantern", CLUSTER, loot_list=lantern_loot)
 llama = Creature("minecraft:llama", CLUSTER, loot_list=llama_loot)
-magma_cube = Creature("minecraft:magma_cube", LONER, loot_list=default_loot)
+magma_cube = Creature("minecraft:magma_cube", LONER, loot_list=magma_cube_loot)
 mare_draft = Creature("animania:mare_draft", TROOP, loot_list=horse_mare_loot)
-moose = Creature("betteranimalsplus:moose", CLUSTER, loot_list=default_loot)
+moose = Creature("betteranimalsplus:moose", CLUSTER, loot_list=moose_loot)
 # #mooshroom = Creature("minecraft:mooshroom", CLUSTER, loot_list=default_loot)
 mule = Creature("horse_colors:mule", CLUSTER, loot_list=mule_loot)
-naga = Creature("mowziesmobs:naga", LONER, loot_list=default_loot)
-nautilus = Creature("betteranimalsplus:nautilus", PAIR, loot_list=default_loot)
-ocelot = Creature("minecraft:ocelot", PAIR, loot_list=default_loot)
+naga = Creature("mowziesmobs:naga", LONER, loot_list=naga_loot)
+nautilus = Creature("betteranimalsplus:nautilus", PAIR, loot_list=nautilus_loot)
+ocelot = Creature("minecraft:ocelot", PAIR, loot_list=ocelot_loot)
 parrot = Creature("minecraft:parrot", PAIR, loot_list=default_loot)
-peachick_blue = Creature("animania:peachick_blue", TROOP, loot_list=default_loot)
-peachick_charcoal = Creature("animania:peachick_charcoal", TROOP, loot_list=default_loot)
-peachick_opal = Creature("animania:peachick_opal", TROOP, loot_list=default_loot)
-peachick_peach = Creature("animania:peachick_peach", TROOP, loot_list=default_loot)
-peachick_purple = Creature("animania:peachick_purple", TROOP, loot_list=default_loot)
-peachick_taupe = Creature("animania:peachick_taupe", TROOP, loot_list=default_loot)
-peachick_white = Creature("animania:peachick_white", TROOP, loot_list=default_loot)
+peachick_blue = Creature("animania:peachick_blue", TROOP, loot_list=peafowl_blue_chick_loot)
+peachick_charcoal = Creature("animania:peachick_charcoal", TROOP, loot_list=peafowl_charcoal_chick_loot)
+peachick_opal = Creature("animania:peachick_opal", TROOP, loot_list=peafowl_opal_chick_loot)
+peachick_peach = Creature("animania:peachick_peach", TROOP, loot_list=peafowl_peach_chick_loot)
+peachick_purple = Creature("animania:peachick_purple", TROOP, loot_list=peafowl_purple_chick_loot)
+peachick_taupe = Creature("animania:peachick_taupe", TROOP, loot_list=peafowl_taupe_chick_loot)
+peachick_white = Creature("animania:peachick_white", TROOP, loot_list=peafowl_white_chick_loot)
 peacock_blue = Creature("animania:peacock_blue", TROOP, loot_list=peafowl_blue_cock_loot)
 peacock_charcoal = Creature("animania:peacock_charcoal", TROOP, loot_list=peafowl_charcoal_cock_loot)
 peacock_opal = Creature("animania:peacock_opal", TROOP, loot_list=peafowl_opal_cock_loot)
@@ -451,14 +491,14 @@ peahen_peach = Creature("animania:peahen_peach", TROOP, loot_list=peafowl_peach_
 peahen_purple = Creature("animania:peahen_purple", TROOP, loot_list=peafowl_purple_hen_loot)
 peahen_taupe = Creature("animania:peahen_taupe", TROOP, loot_list=peafowl_taupe_hen_loot)
 peahen_white = Creature("animania:peahen_white", TROOP, loot_list=peafowl_white_hen_loot)
-pheasant = Creature("betteranimalsplus:pheasant", TROOP, loot_list=default_loot)
+pheasant = Creature("betteranimalsplus:pheasant", TROOP, loot_list=pheasant_loot)
 # #pig = Creature("minecraft:pig", CLUSTER, loot_list=default_loot)
-piglet_duroc = Creature("animania:piglet_duroc", CLUSTER, loot_list=default_loot)
-piglet_hampshire = Creature("animania:piglet_hampshire", CLUSTER, loot_list=default_loot)
-piglet_large_black = Creature("animania:piglet_large_black", CLUSTER, loot_list=default_loot)
-piglet_large_white = Creature("animania:piglet_large_white", CLUSTER, loot_list=default_loot)
-piglet_old_spot = Creature("animania:piglet_old_spot", CLUSTER, loot_list=default_loot)
-piglet_yorkshire = Creature("animania:piglet_yorkshire", CLUSTER, loot_list=default_loot)
+piglet_duroc = Creature("animania:piglet_duroc", CLUSTER, loot_list=porcine_piglet_loot)
+piglet_hampshire = Creature("animania:piglet_hampshire", CLUSTER, loot_list=porcine_piglet_loot)
+piglet_large_black = Creature("animania:piglet_large_black", CLUSTER, loot_list=porcine_piglet_loot)
+piglet_large_white = Creature("animania:piglet_large_white", CLUSTER, loot_list=porcine_piglet_loot)
+piglet_old_spot = Creature("animania:piglet_old_spot", CLUSTER, loot_list=porcine_piglet_loot)
+piglet_yorkshire = Creature("animania:piglet_yorkshire", CLUSTER, loot_list=porcine_piglet_loot)
 polar_bear = Creature("minecraft:polar_bear", LONER, loot_list=bear_polar_loot)
 # #rabbit = Creature("minecraft:rabbit", CLUSTER, loot_list=default_loot)
 ram_dorper = Creature("animania:ram_dorper", HERD, loot_list=sheep_ram_loot)
@@ -473,15 +513,15 @@ rooster_orpington = Creature("animania:rooster_orpington", CLUSTER, loot_list=ch
 rooster_plymouth_rock = Creature("animania:rooster_plymouth_rock", CLUSTER, loot_list=chicken_rooster_loot)
 rooster_rhode_island_red = Creature("animania:rooster_rhode_island_red", CLUSTER, loot_list=chicken_rooster_loot)
 rooster_wyandotte = Creature("animania:rooster_wyandotte", CLUSTER, loot_list=chicken_rooster_loot)
-shark = Creature("betteranimalsplus:shark", CLUSTER, loot_list=default_loot)
+shark = Creature("betteranimalsplus:shark", CLUSTER, loot_list=shark_loot)
 # #sheep = Creature("minecraft:sheep", CLUSTER, loot_list=default_loot)
-shulker = Creature("minecraft:shulker", CLUSTER, loot_list=default_loot)
-silverfish = Creature("minecraft:silverfish", CLUSTER, loot_list=default_loot)
-skeleton = Creature("minecraft:skeleton", CLUSTER, loot_list=default_loot)
-skeleton_horse = Creature("minecraft:skeleton_horse", CLUSTER, loot_list=default_loot)
-slime = Creature("minecraft:slime", PAIR, loot_list=default_loot)
+shulker = Creature("minecraft:shulker", CLUSTER, loot_list=shulker_loot)
+silverfish = Creature("minecraft:silverfish", CLUSTER, loot_list=silverfish_loot)
+skeleton = Creature("minecraft:skeleton", CLUSTER, loot_list=skeleton_loot)
+skeleton_horse = Creature("minecraft:skeleton_horse", CLUSTER, loot_list=skeleton_horse_loot)
+slime = Creature("minecraft:slime", PAIR, loot_list=slime_loot)
 snowman = Creature("minecraft:snowman", LONER, loot_list=snowman_loot)
-songbird = Creature("betteranimalsplus:songbird", CLUSTER, loot_list=default_loot)
+songbird = Creature("betteranimalsplus:songbird", CLUSTER, loot_list=bird_tiny_loot)
 sow_duroc = Creature("animania:sow_duroc", CLUSTER, loot_list=porcine_sow_loot)
 sow_hampshire = Creature("animania:sow_hampshire", CLUSTER, loot_list=porcine_sow_loot)
 sow_large_black = Creature("animania:sow_large_black", CLUSTER, loot_list=porcine_sow_loot)
@@ -490,27 +530,27 @@ sow_old_spot = Creature("animania:sow_old_spot", CLUSTER, loot_list=porcine_sow_
 sow_yorkshire = Creature("animania:sow_yorkshire", CLUSTER, loot_list=porcine_sow_loot)
 spider = Creature("minecraft:spider", LONER, loot_list=spider_loot)
 squid = Creature("minecraft:squid", LONER, loot_list=squid_loot)
-squirrel = Creature("betteranimalsplus:squirrel", CLUSTER, loot_list=default_loot)
+squirrel = Creature("betteranimalsplus:squirrel", CLUSTER, loot_list=squirrel_loot)
 stallion_draft = Creature("animania:stallion_draft", TROOP, loot_list=horse_stallion_loot)
-stray = Creature("minecraft:stray", CLUSTER, loot_list=default_loot)
+stray = Creature("minecraft:stray", CLUSTER, loot_list=stray_loot)
 tarantula = Creature("betteranimalsplus:tarantula", LONER, loot_list=spider_loot)
 toad = Creature("animania:toad", PAIR, loot_list=frog_loot)
 turkey = Creature("betteranimalsplus:turkey", CLUSTER, loot_list=turkey_loot)
-vex = Creature("minecraft:vex", LONER, loot_list=default_loot)
-villager = Creature("minecraft:villager", TROOP, loot_list=default_loot)
-villager_golem = Creature("minecraft:villager_golem", PAIR, loot_list=default_loot)
-vindication_illager = Creature("minecraft:vindication_illager", LONER, loot_list=default_loot)
-walrus = Creature("betteranimalsplus:walrus", CLUSTER, loot_list=default_loot)
-whale = Creature("betteranimalsplus:whale", CLUSTER, loot_list=default_loot)
-witch = Creature("minecraft:witch", LONER, loot_list=default_loot)
-wither = Creature("minecraft:wither", LONER, loot_list=default_loot)
-wither_skeleton = Creature("minecraft:wither_skeleton", LONER, loot_list=default_loot)
-wolf = Creature("minecraft:wolf", PAIR, loot_list=default_loot)
-zombie = Creature("minecraft:zombie", LONER, loot_list=default_loot)
-zombie_horse = Creature("minecraft:zombie_horse", LONER, loot_list=default_loot)
-zombie_pigman = Creature("minecraft:zombie_pigman", LONER, loot_list=default_loot)
-zombie_villager = Creature("minecraft:zombie_villager", LONER, loot_list=default_loot)
-zotzpyre = Creature("betteranimalsplus:zotzpyre", LONER, loot_list=default_loot)
+vex = Creature("minecraft:vex", LONER, loot_list=vex_loot)
+villager = Creature("minecraft:villager", TROOP, loot_list=villager_loot)
+villager_golem = Creature("minecraft:villager_golem", PAIR, loot_list=villager_golem_loot)
+vindication_illager = Creature("minecraft:vindication_illager", LONER, loot_list=vindication_illager_loot)
+walrus = Creature("betteranimalsplus:walrus", CLUSTER, loot_list=walrus_loot)
+whale = Creature("betteranimalsplus:whale", CLUSTER, loot_list=whale_loot)
+witch = Creature("minecraft:witch", LONER, loot_list=witch_loot)
+wither = Creature("minecraft:wither", LONER, loot_list=wither_loot)
+wither_skeleton = Creature("minecraft:wither_skeleton", LONER, loot_list=wither_skeleton_loot)
+wolf = Creature("minecraft:wolf", PAIR, loot_list=wolf_loot)
+zombie = Creature("minecraft:zombie", LONER, loot_list=zombie_loot)
+zombie_horse = Creature("minecraft:zombie_horse", LONER, loot_list=zombie_horse_loot)
+zombie_pigman = Creature("minecraft:zombie_pigman", LONER, loot_list=zombie_pigman_loot)
+zombie_villager = Creature("minecraft:zombie_villager", LONER, loot_list=zombie_villager_loot)
+zotzpyre = Creature("betteranimalsplus:zotzpyre", LONER, loot_list=zotzpyre_loot)
 
 # Entity Spawn ####################################################################################################
 
@@ -564,11 +604,6 @@ with b.location(Location(desert.in_cave())):
                 with b.spawn(16, 1):
                     b.add(blaze.configure(20, 10))
 
-with b.location(Location(desert, weather="thunder")):
-    with b.active_periods(ANY):
-        with b.spawn(16, 90):
-            b.add(blaze.configure(20, 4))
-
 
 with b.location(Location(forest_canopy)):
     with b.active_periods(DAY):
@@ -598,12 +633,12 @@ with b.location(Location(forest_ice)):
     with b.active_periods(DAY):
         with b.spawn(20, 30):
             b.add(reindeer.configure(20, 10))
-
-    with b.active_periods(NIGHT):
-        with b.spawn(20, 30):
             b.add(buck_dutch.configure(20, 2))
             b.add(doe_dutch.configure(20, 4))
             b.add(kit_dutch.configure(20, 2))
+
+    with b.active_periods(NIGHT):
+        with b.spawn(20, 30):
             b.add(frostmaw.configure(5, 2))
 
 
@@ -611,24 +646,19 @@ with b.location(Location(forest_jungle)):
     with b.active_periods(DAY):
         with b.spawn(64, 15):
             b.add(parrot.configure(75, 10))
-            b.add(foliaath.configure(1, 3))
-            b.add(foliaath_baby.configure(1, 2))
             b.add(songbird.configure(20, 15))
             b.add(hedgehog.configure(30, 3))
-            b.add(bull_holstein.with_rarity(20).with_groups_allowed(1))
-            b.add(cow_holstein.with_rarity(20).with_groups_allowed(2))
-            b.add(calf_holstein.with_rarity(20).with_groups_allowed(1))
             b.add(rooster_orpington.with_rarity(10).with_groups_allowed(1))
             b.add(hen_orpington.with_rarity(10).with_groups_allowed(2))
             b.add(chick_orpington.with_rarity(10).with_groups_allowed(1))
             b.add(hog_duroc.with_rarity(20).with_groups_allowed(1))
             b.add(sow_duroc.with_rarity(20).with_groups_allowed(2))
             b.add(piglet_duroc.with_rarity(20).with_groups_allowed(1))
+            b.add(dartfrog.configure(75, 10))
+            b.add(ocelot.configure(2, 1))
 
     with b.active_periods(NIGHT):
         with b.spawn(64, 15):
-            b.add(dartfrog.configure(75, 10))
-            b.add(ocelot.configure(2, 1))
             b.add(foliaath.configure(1, 3))
             b.add(foliaath_baby.configure(1, 2))
 
@@ -648,22 +678,22 @@ with b.location(Location(forest_temperate)):
             b.add(hog_large_black.configure(20, 1))
             b.add(sow_large_black.configure(20, 2))
             b.add(piglet_large_black.configure(20, 1))
-
-    with b.active_periods(NIGHT):
-        with b.spawn(48, 60):
-            b.add(blackbear.configure(20, 5))
-            b.add(fox.configure(30, 10))
-            b.add(peacock_opal.configure(5, 2))
-            b.add(peahen_opal.configure(5, 4))
-            b.add(peachick_opal.configure(5, 2))
-
-    with b.active_periods(TWILIGHT):
-        with b.spawn(20, 15):
             b.add(turkey.configure(20, 5))
             b.add(hedgehog.configure(20, 10))
             b.add(buck_havana.configure(20, 2))
             b.add(doe_havana.configure(20, 4))
             b.add(kit_havana.configure(20, 2))
+            b.add(peacock_opal.configure(5, 2))
+            b.add(peahen_opal.configure(5, 4))
+            b.add(peachick_opal.configure(5, 2))
+            b.add(blackbear.configure(20, 5))
+
+    with b.active_periods(NIGHT):
+        with b.spawn(48, 60):
+            b.add(fox.configure(30, 10))
+
+#    with b.active_periods(TWILIGHT):
+#        with b.spawn(20, 15):
 
 
 with b.location(Location(mesa)):
@@ -676,15 +706,9 @@ with b.location(Location(mesa)):
             b.add(bull_friesian.connfigure(20, 1))
             b.add(cow_friesian.configure(20, 2))
             b.add(calf_friesian.configure(20, 1))
-
-    with b.active_periods(NIGHT):
-        with b.spawn(20, 90):
             b.add(peacock_purple.configure(5, 2))
             b.add(peahen_purple.configure(5, 4))
             b.add(peachick_purple.configure(5, 2))
-
-    with b.active_periods(TWILIGHT):
-        with b.spawn(3, 90):
             b.add(buck_cottontail.configure(20, 2))
             b.add(doe_cottontail.configure(20, 4))
             b.add(kit_cottontail.configure(20, 2))
@@ -692,16 +716,22 @@ with b.location(Location(mesa)):
             b.add(ewe_suffolk.configure(10, 2))
             b.add(lamb_suffolk.configure(10, 1))
 
+#    with b.active_periods(NIGHT):
+#        with b.spawn(20, 90):
+
+#    with b.active_periods(TWILIGHT):
+#        with b.spawn(3, 90):
+
 with b.location(Location(mesa.in_cave())):
     with b.active_periods(ANY):
         with b.light(upper=0):
             with b.spawn(32, 1):
                 b.add(blaze.configure(20, 20))
 
-with b.location(Location(mesa, weather="thunder")):
-    with b.active_periods(ANY):
-        with b.spawn(16, 90):
-            b.add(blaze.configure(20, 4))
+# with b.location(Location(mesa, weather="thunder")):
+#    with b.active_periods(ANY):
+#        with b.spawn(16, 90):
+#            b.add(blaze.configure(20, 4))
 
 
 with b.location(Location(mountain)):
@@ -732,7 +762,7 @@ with b.location(Location(mountain.in_cave())):
         with b.altitude(upper=48):
             with b.light(upper=0):
                 with b.spawn(48, 1):
-                    b.add(blaze.configure(20, 16))
+                    b.add(cave_spider.configure(20, 16))
 
         with b.spawn(16, 1):
             b.add(villager_golem.configure(10, 8))
@@ -757,28 +787,28 @@ with b.location(Location(mountain_forest)):
             b.add(rooster_plymouth_rock.configure(10, 1))
             b.add(hen_plymouth_rock.configure(10, 2))
             b.add(chick_plymouth_rock.configure(10, 1))
-
-    with b.active_periods(NIGHT):
-        with b.spawn(32, 90):
             b.add(brownbear.configure(20, 5))
-            b.add(feralwolf.configure(1, 1))
-            b.add(fox.configure(30, 10))
-            b.add(wolf.configure(1, 2))
             b.add(peacock_charcoal.configure(5, 2))
             b.add(peahen_charcoal.configure(5, 4))
             b.add(peachick_charcoal.configure(5, 2))
-
-    with b.active_periods(TWILIGHT):
-        with b.spawn(32, 90):
             b.add(goose.configure(30, 6))
             b.add(turkey.configure(20, 5))
             b.add(hedgehog.configure(20, 10))
-            b.add(buck_lop.configure(20, 2))
-            b.add(doe_lop.configure(20, 4))
-            b.add(kit_lop.configure(20, 2))
             b.add(hog_large_white.configure(20, 1))
             b.add(sow_large_white.configure(20, 2))
             b.add(piglet_large_white.configure(20, 1))
+            b.add(fox.configure(30, 10))
+            b.add(wolf.configure(1, 2))
+
+    with b.active_periods(NIGHT):
+        with b.spawn(32, 90):
+            b.add(feralwolf.configure(1, 1))
+
+    with b.active_periods(TWILIGHT):
+        with b.spawn(32, 90):
+            b.add(buck_lop.configure(20, 2))
+            b.add(doe_lop.configure(20, 4))
+            b.add(kit_lop.configure(20, 2))
 
 
 with b.location(Location(mushroom)):
@@ -825,6 +855,7 @@ with b.location(Location(nether)):
 with b.location(Location(plains)):
     with b.active_periods(DAY):
         with b.spawn(40, 60):
+            b.add(hamster.configure(15, 10))
             b.add(songbird.configure(30, 10))
             b.add(horse.with_rarity(5).with_groups_allowed(5))
             b.add(ram_friesian.configure(10, 1))
@@ -839,33 +870,33 @@ with b.location(Location(plains)):
             b.add(buck_angora.configure(5, 2))
             b.add(doe_angora.configure(5, 4))
             b.add(kid_angora.configure(5, 2))
-
-    with b.active_periods(NIGHT):
-        with b.spawn(32, 90):
-            b.add(brownbear.configure(20, 5))
-            b.add(hamster.configure(15, 10))
-            b.add(wolf.configure(1, 2))
+            b.add(bull_holstein.with_rarity(20).with_groups_allowed(1))
+            b.add(cow_holstein.with_rarity(20).with_groups_allowed(2))
+            b.add(calf_holstein.with_rarity(20).with_groups_allowed(1))
             b.add(peacock_peach.configure(5, 2))
             b.add(peahen_peach.configure(5, 4))
             b.add(peachick_peach.configure(5, 2))
-
-    with b.active_periods(TWILIGHT):
-        with b.spawn(40, 60):
             b.add(goose.configure(30, 6))
             b.add(boar.configure(10, 5))
-            b.add(buck_jack.configure(20, 2))
-            b.add(doe_jack.configure(20, 4))
-            b.add(kit_jack.configure(20, 2))
             b.add(hog_yorkshire.configure(20, 1))
             b.add(sow_yorkshire.configure(20, 2))
             b.add(piglet_yorkshire.configure(20, 1))
+
+#    with b.active_periods(NIGHT):
+#        with b.spawn(32, 90):
+
+    with b.active_periods(TWILIGHT):
+        with b.spawn(40, 60):
+            b.add(buck_jack.configure(20, 2))
+            b.add(doe_jack.configure(20, 4))
+            b.add(kit_jack.configure(20, 2))
 
 with b.location(Location(BiomeSet.merge(plains, savanna).in_cave())):
     with b.active_periods(ANY):
         with b.altitude(upper=48):
             with b.light(upper=0):
                 with b.spawn(16, 1):
-                    b.add(blaze.configure(20, 10))
+                    b.add(cave_spider.configure(20, 10))
 """
 with b.location(Location(BiomeSet.merge(plains, savanna), weather="thunder")):
     with b.active_periods(ANY):
@@ -898,28 +929,28 @@ with b.location(Location(savanna)):
             b.add(buck_kinder.configure(5, 2))
             b.add(doe_kinder.configure(5, 4))
             b.add(kid_kinder.configure(5, 2))
-
-    with b.active_periods(NIGHT):
-        with b.spawn(32, 90):
-            b.add(coyote.configure(8, 16))
-            b.add(hamster.configure(15, 10))
-            b.add(ferret_grey.configure(3, 4))
-            b.add(ferret_white.configure(2, 4))
+            b.add(donkey.configure(10, 5))
             b.add(peacock_taupe.configure(5, 2))
             b.add(peahen_taupe.configure(5, 4))
             b.add(peachick_taupe.configure(5, 2))
-
-    with b.active_periods(TWILIGHT):
-        with b.spawn(8, 45):
-            b.add(donkey.configure(10, 5))
-            b.add(buck_rex.configure(20, 2))
-            b.add(doe_rex.configure(20, 4))
-            b.add(kit_rex.configure(20, 2))
+            b.add(hamster.configure(15, 10))
             b.add(hog_old_spot.configure(20, 1))
             b.add(sow_old_spot.configure(20, 2))
             b.add(piglet_old_spot.configure(20, 1))
 
+    with b.active_periods(NIGHT):
+        with b.spawn(32, 90):
+            b.add(coyote.configure(8, 16))
 
+    with b.active_periods(TWILIGHT):
+        with b.spawn(8, 45):
+            b.add(ferret_grey.configure(3, 4))
+            b.add(ferret_white.configure(2, 4))
+            b.add(buck_rex.configure(20, 2))
+            b.add(doe_rex.configure(20, 4))
+            b.add(kit_rex.configure(20, 2))
+
+"""
 village_blocks = [Ore("minecraft:grass_path"), mc.dirt, mc.grass, mc.gravel, Ore("minecraft:log")]
 with b.location(Location(settled.with_blocks(village_blocks), structure="Village")):
     with b.active_periods(DAY):
@@ -934,7 +965,7 @@ with b.location(Location(settled.with_blocks(village_blocks), structure="Village
             b.add(cow_jersey.configure(20, 2))
             b.add(calf_jersey.configure(20, 1))
             b.add(villager_golem.configure(1, 1))
-
+"""
 #   with b.active_periods(NIGHT):
 #       with b.spawn(10, 1):
 #           b.add(rat.configure(20, 4))
@@ -947,18 +978,17 @@ with b.location(Location(settled.in_cave().with_blocks(mc.cobblestone, mc.dirt, 
 
 
 with b.location(Location(swamp)):
-#   with b.active_periods(DAY):
-#       with b.spawn(64, 15):
-#           b.add(alligator.configure(10, 4))
-#           b.add(platypus.configure(10, 5))
+   with b.active_periods(DAY):
+       with b.spawn(64, 15):
+           b.add(peacock_blue.configure(5, 2))
+           b.add(peahen_blue.configure(5, 4))
+           b.add(peachick_blue.configure(5, 2))
 
-    with b.active_periods(NIGHT):
+   with b.active_periods(NIGHT):
         with b.spawn(64, 15):
-            b.add(peacock_blue.configure(5, 2))
-            b.add(peahen_blue.configure(5, 4))
-            b.add(peachick_blue.configure(5, 2))
+            b.add(slime.configure(20, 10))
 
-    with b.active_periods(TWILIGHT):
+   with b.active_periods(TWILIGHT):
         with b.spawn(10, 7):
             b.add(toad.configure(5, 10))
 
@@ -978,7 +1008,6 @@ with b.location(Location(swamp, weather="rain")):
         with b.spawn(64, 15):
             b.add(slime.configure(20, 10))
 
-# TODO: check this
 with b.location(Location(swamp, structure="Temple")):
     with b.active_periods(ANY):
         with b.spawn(1, 1):
@@ -996,20 +1025,20 @@ with b.location(Location(BiomeSet.merge(taiga, taiga_snowy))):
             b.add(bull_hereford.configure(20, 1))
             b.add(cow_hereford.configure(20, 2))
             b.add(calf_hereford.configure(20, 1))
-
-    with b.active_periods(NIGHT):
-        with b.spawn(10, 60):
-            b.add(hirschgeist.configure(1, 2))
             b.add(peacock_white.configure(5, 2))
             b.add(peahen_white.configure(5, 4))
             b.add(peachick_white.configure(5, 2))
-
-    with b.active_periods(TWILIGHT):
-        with b.spawn(20, 45):
             b.add(moose.configure(1, 5))
             b.add(pheasant.configure(10, 10))
             b.add(reindeer.configure(10, 5))
             b.add(hamster.configure(15, 10))
+
+    with b.active_periods(NIGHT):
+        with b.spawn(10, 60):
+            b.add(hirschgeist.configure(1, 2))
+
+    with b.active_periods(TWILIGHT):
+        with b.spawn(20, 45):
             b.add(buck_new_zealand.configure(20, 2))
             b.add(doe_new_zealand.configure(20, 4))
             b.add(kit_new_zealand.configure(20, 2))
@@ -1035,12 +1064,7 @@ with b.location(Location(tundra.in_cave())):
         with b.altitude(upper=48):
             with b.light(upper=0):
                 with b.spawn(16, 1):
-                    b.add(blaze.configure(20, 10))
-
-# with b.location(Location(tundra, weather="thunder")):
-#   with b.active_periods(ANY):
-#       with b.spawn(16, 45):
-#           b.add(blizz.configure(20, 4))
+                    b.add(cave_spider.configure(20, 10))
 
 
 with b.location(Location(earth)):
@@ -1060,7 +1084,7 @@ with b.location(Location(earth.in_cave())):
                 b.add(bat.configure(10, 16))
                 b.add(cave_spider.configure(1, 8))
 
-"""
+
 with b.location(Location(BiomeSet.ANY)):
     with b.active_periods(ANY):
         with b.spawn(0, 1):
@@ -1079,5 +1103,5 @@ with b.location(Location(BiomeSet.ANY)):
             b.add(witch)
             b.add(zombie)
             b.add(zombie_villager)
-"""
+
 config = ConfigFileSet(*b.spawns)
