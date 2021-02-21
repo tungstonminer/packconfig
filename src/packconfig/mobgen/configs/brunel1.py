@@ -50,11 +50,9 @@ beach_sandy = BiomeSet("Beach", blocks=OreList(mc.grass, mc.sand))
 beach_gravel = BiomeSet("OceanSpires", "Stone Beach", blocks=GRAVELLY)
 desert = BiomeSet("Desert", "Desert M", "DesertHills", blocks=SANDY)
 forest_canopy = BiomeSet("Roofed Forest", "Roofed Forest M", blocks=CARPETED)
+forest_hills = BiomeSet("Birch Forest Hills", "Birch Forest Hills M", "ForestHills", blocks=CARPETED)
 forest_ice = BiomeSet("Ice Plains Spikes", blocks=SNOWY)
-forest_temperate = BiomeSet(
-    "Birch Forest", "Birch Forest M", "Birch Forest Hills", "Birch Forest Hills M", "Flower Forest", "Forest",
-    "ForestHills", blocks=CARPETED
-)
+forest_temperate = BiomeSet("Birch Forest", "Birch Forest M", "Flower Forest", "Forest", blocks=CARPETED)
 forest_jungle = BiomeSet("Jungle", "Jungle M", "JungleEdge", "JungleEdge M", "JungleHills", blocks=CARPETED)
 mesa = BiomeSet(
     "Mesa", "Mesa (Bryce)", "Mesa Plateau", "Mesa Plateau F", "Mesa Plateau F M", "Mesa Plateau M",
@@ -72,18 +70,16 @@ river = BiomeSet("River", blocks=OreList(mc.grass, mc.sand))
 river_frozen = BiomeSet("FrozenRiver", blocks=OreList.merge(SNOWY, GRASSY))
 savanna = BiomeSet("Savanna", "Savanna M", "Savanna Plateau", "Savanna Plateau M", blocks=GRASSY)
 swamp = BiomeSet("DeepSwamp", "Marsh", "Swampland", "Swampland M", blocks=SWAMPY)
-taiga = BiomeSet(
-    "Mega Spruce Taiga", "Mega Taiga", "Mega Taiga Hills", "Redwood Taiga Hills M", "Taiga", "Taiga M", "TaigaHills",
-    blocks=CARPETED
-)
+taiga = BiomeSet("Mega Spruce Taiga", "Mega Taiga", "Taiga", "Taiga M", blocks=CARPETED)
+taiga_hills = BiomeSet("Mega Taiga Hills", "Redwood Taiga Hills M", "TaigaHills", blocks=CARPETED)
 taiga_snowy = BiomeSet("Cold Taiga", "Cold Taiga M", "Cold Taiga Hills", blocks=CARPETED)
 the_end = BiomeSet("The End", blocks=mc.endstone)
 tundra = BiomeSet("CrystalChasms", "Ice Plains", "Ice Mountains", blocks=SNOWY)
 
 earth = BiomeSet.merge(
-    beach_cold, beach_sandy, beach_gravel, desert, forest_canopy, forest_ice, forest_temperate, forest_jungle,
-    mountain, mountain_forest, mushroom, ocean, ocean_deep, ocean_frozen, plains, river, river_frozen, savanna, swamp,
-    taiga, taiga_snowy, tundra
+    beach_cold, beach_sandy, beach_gravel, desert, forest_canopy, forest_hills, forest_ice, forest_temperate,
+    forest_jungle, mesa, mountain, mountain_forest, mushroom, ocean, ocean_deep, ocean_frozen, plains, river,
+    river_frozen, savanna, swamp, taiga, taiga_hills, taiga_snowy, tundra
 )
 settled = BiomeSet.merge(
     beach_sandy, desert, forest_canopy, forest_temperate, plains, river, savanna, taiga, taiga_snowy, swamp
@@ -256,7 +252,7 @@ naga_loot = [default_loot]
 nautilus_loot = [default_loot]
 ocelot_loot = [default_loot]
 octopus_loot = [Loot("1-2", carcass_octopus), Loot("0-2", ink_sac)]
-parrot_loot =[default_loot]
+parrot_loot = [default_loot]
 peafowl_blue_chick_loot = [default_loot]
 peafowl_blue_hen_loot = [Loot("1-2", carcass_peacock)]
 peafowl_blue_cock_loot = [Loot("1-2", carcass_peacock_prime), Loot("1-2", feather_peacock_blue)]
@@ -561,6 +557,7 @@ with b.location(Location(beach_cold)):
         with b.spawn(10, 90):
             b.add(walrus.with_rarity(10).with_groups_allowed(5))
             b.add(polar_bear.with_rarity(1))
+            b.add(horseshoecrab.configure(30, 3))
 
 
 with b.location(Location(beach_gravel)):
@@ -579,24 +576,11 @@ with b.location(Location(desert)):
     with b.active_periods(DAY):
         with b.spawn(20, 90):
             b.add(coyote.configure(10, 5))
-            b.add(buck_chinchilla.with_rarity(10).with_groups_allowed(1))
-            b.add(doe_chinchilla.with_rarity(10).with_groups_allowed(2))
-            b.add(kit_chinchilla.with_rarity(10).with_groups_allowed(1))
-            b.add(buck_nigerian_dwarf.with_rarity(5).with_groups_allowed(2))
-            b.add(doe_nigerian_dwarf.with_rarity(5).with_groups_allowed(4))
-            b.add(kid_nigerian_dwarf.with_rarity(5).with_groups_allowed(2))
-            b.add(ram_merino.with_rarity(10).with_groups_allowed(1))
-            b.add(ewe_merino.with_rarity(10).with_groups_allowed(2))
-            b.add(lamb_merino.with_rarity(10).with_group_allowed(1))
 
     with b.active_periods(NIGHT):
         with b.spawn(3, 90):
             b.add(tarantula.configure(1, 2))
-"""
-    with b.active_periods(TWILIGHT):
-        with b.spawn(3, 90):
-            b.add(rabbit.with_rarity(20).with_groups_allowed(2))
-"""
+
 with b.location(Location(desert.in_cave())):
     with b.active_periods(ANY):
         with b.altitude(upper=48):
@@ -612,49 +596,64 @@ with b.location(Location(forest_canopy)):
             b.add(cow_mooshroom.with_rarity(20).with_groups_allowed(2))
             b.add(calf_mooshroom.with_rarity(20).with_groups_allowed(1))
             b.add(songbird.with_rarity(4).with_groups_allowed(3))
-            b.add(rooster_rhode_island_red.with_rarity(10).with_groups_allowed(1))
-            b.add(hen_rhode_island_red.with_rarity(10).with_groups_allowed(2))
-            b.add(chick_rhode_island_red.with_rarity(10).with_groups_allowed(1))
-"""
-    with b.active_periods(NIGHT):
-        with b.spawn(64, 60):
-            b.add(treefrog.with_rarity(40).with_groups_allowed(16))
-            b.add(echidna.with_rarity(20).with_groups_allowed(4))
-            b.add(owl.with_rarity(10).with_groups_allowed(4))
-            b.add(lantern.with_rarity(5).with_groups_allowed(8))
-            b.add(spider.with_rarity(1))
+            b.add(pheasant.configure(10, 4))
 
     with b.active_periods(TWILIGHT):
         with b.spawn(20, 60):
-            b.add(rabbit.with_rarity(20).with_groups_allowed(5))
-"""
+            b.add(buck_havana.with_rarity(20).with_groups_allowed(2))
+            b.add(doe_havana.configure(20, 4))
+            b.add(kit_havana.configure(20, 2))
+
+
+with b.location(Location(forest_hills)):
+    with b.active_periods(DAY):
+        with b.spawn(20, 30):
+            b.add(bull_holstein.connfigure(20, 1))
+            b.add(cow_holstein.configure(20, 2))
+            b.add(calf_holstein.configure(20, 1))
+            b.add(ram_dorset.configure(10, 1))
+            b.add(ewe_dorset.configure(10, 2))
+            b.add(lamb_dorset.configure(10, 1))
+            b.add(buck_kiko.configure(5, 2))
+            b.add(doe_kiko.configure(5, 4))
+            b.add(kid_kiko.configure(5, 2))
+            b.add(rooster_orpington.configure(10, 1))
+            b.add(hen_orpington.configure(10, 2))
+            b.add(chick_orpington.configure(10, 1))
+            b.add(hog_hampshire.configure(20, 1))
+            b.add(sow_hampshire.configure(20, 2))
+            b.add(piglet_hampshire.configure(20, 1))
+            b.add(peacock_charcoal.configure(5, 2))
+            b.add(peahen_charcoal.configure(5, 4))
+            b.add(peachick_charcoal.configure(5, 2))
+            b.add(deer.configure(10, 4))
+            b.add(goose.configure(30, 6))
+            b.add(moose.configure(1, 5))
+            b.add(squirrel.configure(30, 5))
+            b.add(hedgehog.configure(20, 10))
+
+    with b.active_periods(TWILIGHT):
+        with b.spawn(32, 90):
+            b.add(buck_chinchilla.configure(20, 2))
+            b.add(doe_chinchilla.configure(20, 4))
+            b.add(kit_chinchilla.configure(20, 2))
+            b.add(ferret_grey.configure(3, 4))
+            b.add(ferret_white.configure(2, 4))
+
 
 with b.location(Location(forest_ice)):
     with b.active_periods(DAY):
         with b.spawn(20, 30):
             b.add(reindeer.configure(20, 10))
-            b.add(buck_dutch.configure(20, 2))
-            b.add(doe_dutch.configure(20, 4))
-            b.add(kit_dutch.configure(20, 2))
-
-    with b.active_periods(NIGHT):
-        with b.spawn(20, 30):
-            b.add(frostmaw.configure(5, 2))
+            b.add(brownbear.configure(5, 2))
 
 
 with b.location(Location(forest_jungle)):
     with b.active_periods(DAY):
         with b.spawn(64, 15):
-            b.add(parrot.configure(75, 10))
-            b.add(songbird.configure(20, 15))
-            b.add(hedgehog.configure(30, 3))
-            b.add(rooster_orpington.with_rarity(10).with_groups_allowed(1))
-            b.add(hen_orpington.with_rarity(10).with_groups_allowed(2))
-            b.add(chick_orpington.with_rarity(10).with_groups_allowed(1))
-            b.add(hog_duroc.with_rarity(20).with_groups_allowed(1))
-            b.add(sow_duroc.with_rarity(20).with_groups_allowed(2))
-            b.add(piglet_duroc.with_rarity(20).with_groups_allowed(1))
             b.add(dartfrog.configure(75, 10))
+            b.add(songbird.configure(20, 15))
+            b.add(parrot.configure(75, 10))
             b.add(ocelot.configure(2, 1))
 
     with b.active_periods(NIGHT):
@@ -666,61 +665,56 @@ with b.location(Location(forest_jungle)):
 with b.location(Location(forest_temperate)):
     with b.active_periods(DAY):
         with b.spawn(48, 60):
-            b.add(badger.configure(20, 10))
-            b.add(songbird.configure(30, 10))
-            b.add(squirrel.configure(30, 5))
             b.add(bull_angus.configure(20, 1))
             b.add(cow_angus.configure(20, 2))
             b.add(calf_angus.configure(20, 1))
-            b.add(rooster_wyandotte.configure(10, 1))
-            b.add(hen_wyandotte.configure(10, 2))
-            b.add(chick_wyandotte.configure(10, 1))
+            b.add(buck_nigerian_dwarf.configure(5, 2))
+            b.add(doe_nigerian_dwarf.configure(5, 4))
+            b.add(kid_nigerian_dwarf.configure(5, 2))
+            b.add(buck_dutch.configure(20, 2))
+            b.add(doe_dutch.configure(20, 4))
+            b.add(kit_dutch.configure(20, 2))
             b.add(hog_large_black.configure(20, 1))
             b.add(sow_large_black.configure(20, 2))
             b.add(piglet_large_black.configure(20, 1))
-            b.add(turkey.configure(20, 5))
-            b.add(hedgehog.configure(20, 10))
-            b.add(buck_havana.configure(20, 2))
-            b.add(doe_havana.configure(20, 4))
-            b.add(kit_havana.configure(20, 2))
             b.add(peacock_opal.configure(5, 2))
             b.add(peahen_opal.configure(5, 4))
             b.add(peachick_opal.configure(5, 2))
-            b.add(blackbear.configure(20, 5))
+            b.add(badger.configure(20, 10))
+            b.add(squirrel.configure(30, 5))
+            b.add(songbird.configure(30, 10))
+            b.add(hedgehog.configure(20, 10))
 
     with b.active_periods(NIGHT):
         with b.spawn(48, 60):
             b.add(fox.configure(30, 10))
 
-#    with b.active_periods(TWILIGHT):
-#        with b.spawn(20, 15):
-
 
 with b.location(Location(mesa)):
     with b.active_periods(DAY):
         with b.spawn(20, 90):
-            b.add(mule.configure(6, 4))
-            b.add(buck_pygmy.configure(5, 2))
-            b.add(doe_pygmy.configure(5, 4))
-            b.add(kid_pygmy.configure(5, 2))
             b.add(bull_friesian.connfigure(20, 1))
             b.add(cow_friesian.configure(20, 2))
             b.add(calf_friesian.configure(20, 1))
-            b.add(peacock_purple.configure(5, 2))
-            b.add(peahen_purple.configure(5, 4))
-            b.add(peachick_purple.configure(5, 2))
-            b.add(buck_cottontail.configure(20, 2))
-            b.add(doe_cottontail.configure(20, 4))
-            b.add(kit_cottontail.configure(20, 2))
             b.add(ram_suffolk.configure(10, 1))
             b.add(ewe_suffolk.configure(10, 2))
             b.add(lamb_suffolk.configure(10, 1))
+            b.add(buck_pygmy.configure(5, 2))
+            b.add(doe_pygmy.configure(5, 4))
+            b.add(kid_pygmy.configure(5, 2))
+            b.add(hog_duroc.configure(20, 1))
+            b.add(sow_duroc.configure(20, 2))
+            b.add(piglet_duroc.configure(20, 1))
+            b.add(peacock_purple.configure(5, 2))
+            b.add(peahen_purple.configure(5, 4))
+            b.add(peachick_purple.configure(5, 2))
+            b.add(mule.configure(6, 4))
 
-#    with b.active_periods(NIGHT):
-#        with b.spawn(20, 90):
-
-#    with b.active_periods(TWILIGHT):
-#        with b.spawn(3, 90):
+    with b.active_periods(TWILIGHT):
+        with b.spawn(3, 90):
+            b.add(buck_cottontail.configure(20, 2))
+            b.add(doe_cottontail.configure(20, 4))
+            b.add(kit_cottontail.configure(20, 2))
 
 with b.location(Location(mesa.in_cave())):
     with b.active_periods(ANY):
@@ -728,21 +722,13 @@ with b.location(Location(mesa.in_cave())):
             with b.spawn(32, 1):
                 b.add(blaze.configure(20, 20))
 
-# with b.location(Location(mesa, weather="thunder")):
-#    with b.active_periods(ANY):
-#        with b.spawn(16, 90):
-#            b.add(blaze.configure(20, 4))
-
 
 with b.location(Location(mountain)):
     with b.active_periods(DAY):
         with b.spawn(20, 90):
-            b.add(buck_alpine.configure(5, 2))
-            b.add(doe_alpine.configure(5, 4))
-            b.add(kid_alpine.configure(5, 2))
-            b.add(hog_hampshire.configure(20, 1))
-            b.add(sow_hampshire.configure(20, 2))
-            b.add(piglet_hampshire.configure(20, 1))
+            b.add(buck_angora.configure(5, 2))
+            b.add(doe_angora.configure(5, 4))
+            b.add(kid_angora.configure(5, 2))
 
         with b.altitude(lower=110):
             with b.spawn(4, 90):
@@ -762,7 +748,7 @@ with b.location(Location(mountain.in_cave())):
         with b.altitude(upper=48):
             with b.light(upper=0):
                 with b.spawn(48, 1):
-                    b.add(cave_spider.configure(20, 16))
+                    b.add(zotzpyre.configure(20, 16))
 
         with b.spawn(16, 1):
             b.add(villager_golem.configure(10, 8))
@@ -771,44 +757,12 @@ with b.location(Location(mountain.in_cave())):
 with b.location(Location(mountain_forest)):
     with b.active_periods(DAY):
         with b.spawn(32, 90):
-            b.add(deer.configure(10, 4))
-            b.add(songbird.configure(30, 10))
-            b.add(squirrel.configure(30, 5))
             b.add(lammergeier.configure(2, 5))
-            b.add(buck_kiko.configure(5, 2))
-            b.add(doe_kiko.configure(5, 4))
-            b.add(kid_kiko.configure(5, 2))
-            b.add(ram_jacob.configure(10, 1))
-            b.add(ewe_jacob.configure(10, 2))
-            b.add(lamb_jacob.configure(10, 1))
-            b.add(bull_highland.connfigure(20, 1))
-            b.add(cow_highland.configure(20, 2))
-            b.add(calf_highland.configure(20, 1))
-            b.add(rooster_plymouth_rock.configure(10, 1))
-            b.add(hen_plymouth_rock.configure(10, 2))
-            b.add(chick_plymouth_rock.configure(10, 1))
-            b.add(brownbear.configure(20, 5))
-            b.add(peacock_charcoal.configure(5, 2))
-            b.add(peahen_charcoal.configure(5, 4))
-            b.add(peachick_charcoal.configure(5, 2))
-            b.add(goose.configure(30, 6))
-            b.add(turkey.configure(20, 5))
-            b.add(hedgehog.configure(20, 10))
-            b.add(hog_large_white.configure(20, 1))
-            b.add(sow_large_white.configure(20, 2))
-            b.add(piglet_large_white.configure(20, 1))
-            b.add(fox.configure(30, 10))
-            b.add(wolf.configure(1, 2))
+            b.add(squirrel.configure(30, 5))
 
     with b.active_periods(NIGHT):
         with b.spawn(32, 90):
             b.add(feralwolf.configure(1, 1))
-
-    with b.active_periods(TWILIGHT):
-        with b.spawn(32, 90):
-            b.add(buck_lop.configure(20, 2))
-            b.add(doe_lop.configure(20, 4))
-            b.add(kit_lop.configure(20, 2))
 
 
 with b.location(Location(mushroom)):
@@ -822,26 +776,27 @@ with b.location(Location(mushroom)):
 with b.location(Location(ocean)):
     with b.active_periods(ANY):
         with b.spawn(64, 30):
+            b.add(bobbit_worm.configure(1, 2))
+            b.add(eel_saltwater.configure(20, 4))
             b.add(jellyfish.configure(25, 10))
             b.add(nautilus.configure(25, 10))
-            b.add(eel_saltwater.configure(20, 4))
-            b.add(bobbit_worm.configure(1, 2))
 
 
 with b.location(Location(ocean_deep)):
     with b.active_periods(ANY):
         with b.spawn(32, 90):
+            b.add(jellyfish.configure(25, 10))
             b.add(shark.configure(10, 10))
-            b.add(squid.configure(30, 10))
             b.add(whale.configure(10, 10))
+            b.add(squid.configure(30, 10))
 
 
 with b.location(Location(ocean_frozen.in_water())):
     with b.active_periods(ANY):
         with b.spawn(16, 120):
             b.add(shark.configure(5, 5))
-            b.add(squid.configure(15, 5))
             b.add(whale.configure(5, 5))
+            b.add(squid.configure(15, 5))
 
 
 with b.location(Location(nether)):
@@ -855,41 +810,38 @@ with b.location(Location(nether)):
 with b.location(Location(plains)):
     with b.active_periods(DAY):
         with b.spawn(40, 60):
-            b.add(hamster.configure(15, 10))
-            b.add(songbird.configure(30, 10))
-            b.add(horse.with_rarity(5).with_groups_allowed(5))
-            b.add(ram_friesian.configure(10, 1))
-            b.add(ewe_friesian.configure(10, 2))
-            b.add(lamb_friesian.configure(10, 1))
             b.add(bull_jersey.configure(20, 1))
             b.add(cow_jersey.configure(20, 2))
             b.add(calf_jersey.configure(20, 1))
+            b.add(ram_friesian.configure(10, 1))
+            b.add(ewe_friesian.configure(10, 2))
+            b.add(lamb_friesian.configure(10, 1))
+            b.add(buck_alpine.configure(5, 2))
+            b.add(doe_alpine.configure(5, 4))
+            b.add(kid_alpine.configure(5, 2))
             b.add(rooster_leghorn.configure(10, 1))
             b.add(hen_leghorn.configure(10, 2))
             b.add(chick_leghorn.configure(10, 1))
-            b.add(buck_angora.configure(5, 2))
-            b.add(doe_angora.configure(5, 4))
-            b.add(kid_angora.configure(5, 2))
-            b.add(bull_holstein.with_rarity(20).with_groups_allowed(1))
-            b.add(cow_holstein.with_rarity(20).with_groups_allowed(2))
-            b.add(calf_holstein.with_rarity(20).with_groups_allowed(1))
-            b.add(peacock_peach.configure(5, 2))
-            b.add(peahen_peach.configure(5, 4))
-            b.add(peachick_peach.configure(5, 2))
-            b.add(goose.configure(30, 6))
-            b.add(boar.configure(10, 5))
             b.add(hog_yorkshire.configure(20, 1))
             b.add(sow_yorkshire.configure(20, 2))
             b.add(piglet_yorkshire.configure(20, 1))
-
-#    with b.active_periods(NIGHT):
-#        with b.spawn(32, 90):
+            b.add(peacock_peach.configure(5, 2))
+            b.add(peahen_peach.configure(5, 4))
+            b.add(peachick_peach.configure(5, 2))
+            b.add(boar.configure(10, 5))
+            b.add(coyote.configure(10, 5))
+            b.add(goose.configure(30, 6))
+            b.add(horse.with_rarity(5).with_groups_allowed(5))
+            b.add(hamster.configure(15, 10))
 
     with b.active_periods(TWILIGHT):
         with b.spawn(40, 60):
             b.add(buck_jack.configure(20, 2))
             b.add(doe_jack.configure(20, 4))
             b.add(kit_jack.configure(20, 2))
+            b.add(ferret_grey.configure(3, 4))
+            b.add(ferret_white.configure(2, 4))
+
 
 with b.location(Location(BiomeSet.merge(plains, savanna).in_cave())):
     with b.active_periods(ANY):
@@ -897,18 +849,13 @@ with b.location(Location(BiomeSet.merge(plains, savanna).in_cave())):
             with b.light(upper=0):
                 with b.spawn(16, 1):
                     b.add(cave_spider.configure(20, 10))
-"""
-with b.location(Location(BiomeSet.merge(plains, savanna), weather="thunder")):
-    with b.active_periods(ANY):
-        with b.spawn(16, 90):
-            b.add(blitz.configure(20, 4))
-"""
+
 
 with b.location(Location(river.in_water())):
     with b.active_periods(ANY):
         with b.spawn(16, 15):
-            b.add(frog(30, 10))
             b.add(eel_freshwater.configure(20, 4))
+            b.add(frog(30, 10))
 
 
 with b.location(Location(river_frozen.in_water())):
@@ -920,56 +867,40 @@ with b.location(Location(river_frozen.in_water())):
 with b.location(Location(savanna)):
     with b.active_periods(DAY):
         with b.spawn(32, 90):
-            b.add(ram_dorper.configure(10, 1))
-            b.add(ewe_dorper.configure(10, 2))
-            b.add(lamb_dorper.configure(10, 1))
             b.add(bull_longhorn.configure(20, 1))
             b.add(cow_longhorn.configure(20, 2))
             b.add(calf_longhorn.configure(20, 1))
+            b.add(ram_dorper.configure(10, 1))
+            b.add(ewe_dorper.configure(10, 2))
+            b.add(lamb_dorper.configure(10, 1))
             b.add(buck_kinder.configure(5, 2))
             b.add(doe_kinder.configure(5, 4))
             b.add(kid_kinder.configure(5, 2))
-            b.add(donkey.configure(10, 5))
-            b.add(peacock_taupe.configure(5, 2))
-            b.add(peahen_taupe.configure(5, 4))
-            b.add(peachick_taupe.configure(5, 2))
-            b.add(hamster.configure(15, 10))
             b.add(hog_old_spot.configure(20, 1))
             b.add(sow_old_spot.configure(20, 2))
             b.add(piglet_old_spot.configure(20, 1))
-
-    with b.active_periods(NIGHT):
-        with b.spawn(32, 90):
-            b.add(coyote.configure(8, 16))
+            b.add(peacock_taupe.configure(5, 2))
+            b.add(peahen_taupe.configure(5, 4))
+            b.add(peachick_taupe.configure(5, 2))
+            b.add(turkey.configure(20, 5))
+            b.add(donkey.configure(10, 5))
+            b.add(hamster.configure(15, 10))
 
     with b.active_periods(TWILIGHT):
         with b.spawn(8, 45):
-            b.add(ferret_grey.configure(3, 4))
-            b.add(ferret_white.configure(2, 4))
-            b.add(buck_rex.configure(20, 2))
-            b.add(doe_rex.configure(20, 4))
-            b.add(kit_rex.configure(20, 2))
+            b.add(buck_lop.configure(20, 2))
+            b.add(doe_lop.configure(20, 4))
+            b.add(kit_lop.configure(20, 2))
 
-"""
+
 village_blocks = [Ore("minecraft:grass_path"), mc.dirt, mc.grass, mc.gravel, Ore("minecraft:log")]
 with b.location(Location(settled.with_blocks(village_blocks), structure="Village")):
     with b.active_periods(DAY):
         with b.spawn(20, 1):
-            b.add(rooster_leghorn.configure(10, 1))
-            b.add(hen_leghorn.configure(10, 2))
-            b.add(chick_leghorn.configure(10, 1))
-            b.add(hog_large_white.configure(20, 1))
-            b.add(sow_large_white.configure(20, 2))
-            b.add(piglet_large_white.configure(20, 1))
-            b.add(bull_jersey.configure(20, 1))
-            b.add(cow_jersey.configure(20, 2))
-            b.add(calf_jersey.configure(20, 1))
+            b.add(stallion_draft.configure(20, 1))
+            b.add(mare_draft.configure(20, 2))
+            b.add(foal_draft.configure(20, 1))
             b.add(villager_golem.configure(1, 1))
-"""
-#   with b.active_periods(NIGHT):
-#       with b.spawn(10, 1):
-#           b.add(rat.configure(20, 4))
-
 
 with b.location(Location(settled.in_cave().with_blocks(mc.cobblestone, mc.dirt, mc.planks), structure="Village")):
     with b.active_periods(NIGHT):
@@ -978,17 +909,13 @@ with b.location(Location(settled.in_cave().with_blocks(mc.cobblestone, mc.dirt, 
 
 
 with b.location(Location(swamp)):
-   with b.active_periods(DAY):
-       with b.spawn(64, 15):
-           b.add(peacock_blue.configure(5, 2))
-           b.add(peahen_blue.configure(5, 4))
-           b.add(peachick_blue.configure(5, 2))
-
-   with b.active_periods(NIGHT):
+    with b.active_periods(NIGHT):
         with b.spawn(64, 15):
             b.add(slime.configure(20, 10))
+            b.add(foliaath.configure(1, 3))
+            b.add(foliaath_baby.configure(1, 2))
 
-   with b.active_periods(TWILIGHT):
+    with b.active_periods(TWILIGHT):
         with b.spawn(10, 7):
             b.add(toad.configure(5, 10))
 
@@ -1014,34 +941,80 @@ with b.location(Location(swamp, structure="Temple")):
             b.add(witch.configure(20, 1))
 
 
-with b.location(Location(BiomeSet.merge(taiga, taiga_snowy))):
+with b.location(Location(taiga)):
     with b.active_periods(DAY):
         with b.spawn(24, 60):
-            b.add(songbird.configure(20, 10))
-            b.add(squirrel.configure(20, 5))
-            b.add(buck_fainting.configure(5, 2))
-            b.add(doe_fainting.configure(5, 4))
-            b.add(kid_fainting.configure(5, 2))
             b.add(bull_hereford.configure(20, 1))
             b.add(cow_hereford.configure(20, 2))
             b.add(calf_hereford.configure(20, 1))
-            b.add(peacock_white.configure(5, 2))
-            b.add(peahen_white.configure(5, 4))
-            b.add(peachick_white.configure(5, 2))
-            b.add(moose.configure(1, 5))
-            b.add(pheasant.configure(10, 10))
-            b.add(reindeer.configure(10, 5))
+            b.add(ram_jacob.configure(10, 1))
+            b.add(ewe_jacob.configure(10, 2))
+            b.add(lamb_jacob.configure(10, 1))
+            b.add(buck_fainting.configure(5, 2))
+            b.add(doe_fainting.configure(5, 4))
+            b.add(kid_fainting.configure(5, 2))
+            b.add(rooster_rhode_island_red.configure(10, 1))
+            b.add(hen_rhode_island_red.configure(10, 2))
+            b.add(chick_rhode_island_red.configure(10, 1))
+            b.add(hog_large_white.configure(20, 1))
+            b.add(sow_large_white.configure(20, 2))
+            b.add(piglet_large_white.configure(20, 1))
+            b.add(blackbear.configure(20, 5))
+            b.add(coyote.configure(10, 5))
+            b.add(squirrel.configure(20, 5))
+            b.add(songbird.configure(20, 10))
             b.add(hamster.configure(15, 10))
-
-    with b.active_periods(NIGHT):
-        with b.spawn(10, 60):
-            b.add(hirschgeist.configure(1, 2))
 
     with b.active_periods(TWILIGHT):
         with b.spawn(20, 45):
             b.add(buck_new_zealand.configure(20, 2))
             b.add(doe_new_zealand.configure(20, 4))
             b.add(kit_new_zealand.configure(20, 2))
+
+
+with b.location(Location(taiga_hills)):
+    with b.active_periods(DAY):
+        with b.spawn(24, 60):
+            b.add(bull_highland.connfigure(20, 1))
+            b.add(cow_highland.configure(20, 2))
+            b.add(calf_highland.configure(20, 1))
+            b.add(ram_merino.configure(10, 1))
+            b.add(ewe_merino.configure(10, 2))
+            b.add(lamb_merino.configure(10, 1))
+            b.add(rooster_wyandotte.configure(10, 1))
+            b.add(hen_wyandotte.configure(10, 2))
+            b.add(chick_wyandotte.configure(10, 1))
+            b.add(peacock_blue.configure(5, 2))
+            b.add(peahen_blue.configure(5, 4))
+            b.add(peachick_blue.configure(5, 2))
+            b.add(deer.configure(10, 4))
+            b.add(turkey.configure(20, 5))
+            b.add(horse.configure(5, 5))
+            b.add(hedgehog.configure(20, 10))
+
+    with b.active_periods(NIGHT):
+        with b.spawn(10, 60):
+            b.add(fox.configure(30, 10))
+
+    with b.active_periods(TWILIGHT):
+        with b.spawn(20, 45):
+            b.add(buck_rex.configure(20, 2))
+            b.add(doe_rex.configure(20, 4))
+            b.add(kit_rex.configure(20, 2))
+
+
+with b.location(Location(taiga_snowy)):
+    with b.active_periods(DAY):
+        with b.spawn(24, 60):
+            b.add(peacock_white.configure(5, 2))
+            b.add(peahen_white.configure(5, 4))
+            b.add(peachick_white.configure(5, 2))
+            b.add(moose.configure(1, 5))
+            b.add(reindeer.configure(10, 5))
+
+    with b.active_periods(NIGHT):
+        with b.spawn(10, 60):
+            b.add(hirschgeist.configure(1, 2))
 
 
 with b.location(Location(the_end)):
@@ -1064,7 +1037,7 @@ with b.location(Location(tundra.in_cave())):
         with b.altitude(upper=48):
             with b.light(upper=0):
                 with b.spawn(16, 1):
-                    b.add(cave_spider.configure(20, 10))
+                    b.add(zotzpyre.configure(20, 10))
 
 
 with b.location(Location(earth)):
@@ -1082,7 +1055,6 @@ with b.location(Location(earth.in_cave())):
         with b.altitude(lower=48):
             with b.spawn(32, 1):
                 b.add(bat.configure(10, 16))
-                b.add(cave_spider.configure(1, 8))
 
 
 with b.location(Location(BiomeSet.ANY)):
