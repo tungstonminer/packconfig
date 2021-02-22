@@ -3,7 +3,7 @@
 import subprocess
 import sys
 
-from packconfig.mobgen.configs import ad_astra
+from packconfig.mobgen.configs import brunel
 
 
 ########################################################################################################################
@@ -15,7 +15,7 @@ if __name__ == "__main__":
     if target_dir == "ignore":
         target_dir = None
 
-    ad_astra.config.generate(target_dir)
+    brunel.config.generate(target_dir)
 
     if stdin_path != "ignore":
         subprocess.run(f"echo '/ctrlreload' >> {stdin_path}", shell=True)

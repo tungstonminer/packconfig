@@ -82,9 +82,11 @@ class MobConfigFile(object):
         """Print a JSON-encoded version of this file."""
         text = json.dumps(self.as_json(), indent="    ")
         if target_dir is not None:
-            target_dir = os.path.join(target_dir, "incontrol")
+            target_dir = os.path.join(target_dir, "config", "incontrol")
             os.makedirs(target_dir, exist_ok=True)
-            with FileIO(os.path.join(target_dir, self.target_file), "w") as f:
+            target_path = os.path.join(target_dir, self.target_file)
+            with FileIO(target_path, "w") as f:
+                print(f"writing file: {target_path}")
                 f.write(text.encode("utf8"))
         else:
             print(f"{self.target_file} >>>\n{text}\n<<<")
