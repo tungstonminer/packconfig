@@ -24,7 +24,7 @@ vanilla.config.enabled = False
 
 # Distributions ########################################################################################################
 
-desert_nether_band = UniformDistribution("desert_nether", 0, 32)
+desert_nether_band = UniformDistribution("desert_nether", 0, 28)
 lava_band = UniformDistribution("lava", 0, 16)
 mountain_band = UniformDistribution("mountain", 64, 128)
 nether_band = UniformDistribution("nether", 8, 118)
@@ -175,9 +175,10 @@ with config as c:
         with c.biomes(river_biomes):
             add_biome_standard(c, None, None, None, None)
 
-            with c.distribution(mountain_band):
-                c.add(ClusterDeposit(Vein(gold_gravel_ore, material_ore=gravel, purity=0.5), 2))
-                c.add(ClusterDeposit(Vein(silver_gravel_ore, material_ore=gravel, purity=1.0), 2))
+            with c.distribution(submerged_gravel_band):
+                c.add(ClusterDeposit(Vein(iron_gravel_ore, material_ore=gravel, purity=1.0), 2))
+                c.add(ClusterDeposit(Vein(silver_gravel_ore, material_ore=gravel, purity=0.5), 2))
+                c.add(ClusterDeposit(Vein(gold_gravel_ore, material_ore=gravel, purity=0.25), 2))
 
         with c.biomes(ocean_biomes):
             add_biome_standard(c, None, None, None, Vein(limestone))
@@ -235,8 +236,8 @@ with config as c:
 
             with c.distribution(desert_nether_band):
                 c.add(ClusterDeposit(Vein(quartz_ore, material_ore=netherrack, purity=2.0)))
-                c.add(CaveDeposit(Vein(glowstone), cluster_count=4))
-                c.add(CaveDeposit(Vein(soul_sand), ceiling=False, cluster_count=16))
+                c.add(CaveDeposit(Vein(glowstone), cluster_count=4, max_elevation=28))
+                c.add(CaveDeposit(Vein(soul_sand), ceiling=False, cluster_count=16, max_elevation=24))
 
         with c.biomes(any_biomes):
             with c.distribution(lava_band):
