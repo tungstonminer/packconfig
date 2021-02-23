@@ -70,7 +70,7 @@ mountain_gradient = Gradient(
 gemstone_gradient = Gradient(
     "gemstone",
     Sweep("max_height", 12, 40), Sweep("min_height", 4, 32),
-    Sweep("purity", 0.75, 0.1), Sweep("cluster_size", 2, 1),
+    Sweep("purity", 0.3, 0.1), Sweep("cluster_size", 2, 1),
 )
 
 mineral_buried_gradient = Gradient(
