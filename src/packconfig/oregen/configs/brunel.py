@@ -2,7 +2,7 @@
 
 from packconfig.oregen import BiomeSet, ConfigFile, Gradient, Sweep, Vein
 from packconfig.oregen.configs import vanilla
-from packconfig.oregen.deposits import CaveDeposit, ClusterDeposit
+from packconfig.oregen.deposits import CaveDeposit, ClusterDeposit, LakeDeposit
 from packconfig.oregen.distributions import UniformDistribution
 from packconfig.oregen.data import (
     chisel as ch,
@@ -94,6 +94,7 @@ soul_sand = mc.soul_sand
 
 # Liquids
 crude_oil = ip.crude_oil_fluid
+lava = mc.lava
 
 # Metals
 aluminum_ore = im.aluminum_ore
@@ -166,7 +167,7 @@ config = ConfigFile("02_brunel.json")
 with config as c:
     with c.dimension(mc.overworld):
         with c.biomes(mountain_biomes):
-            add_biome_standard(c, Vein(iron_ore), None, Vein(diamond_ore), Vein(marble))
+            add_biome_standard(c, Vein(iron_ore), None, Vein(silver_ore), Vein(marble))
             c.add(mountain_gradient.with_template(ClusterDeposit(Vein(iron_ore))))
 
             with c.distribution(mountain_band):
@@ -212,7 +213,21 @@ with config as c:
             add_biome_standard(c, Vein(tin_ore), Vein(apatite_ore), None, None)
 
         with c.biomes(swamp_biomes):
-            add_biome_standard(c, Vein(silver_ore), Vein(coal_ore), None, Vein(basalt))
+            coal_vein = Vein(
+                coal_ore.weighted(99.5),
+                diamond_ore.weighted(0.5),
+            )
+            coal_gradient = Gradient(
+                "coal_gradient",
+                Sweep("max_height", 60, 8), Sweep("min_height", 52, 0),
+                Sweep("purity", 4.0, 0.5), Sweep("cluster_size", 12, 1),
+            )
+
+            with c.distribution(lava_band):
+                c.add(LakeDeposit(Vein(diamond_ore).with_purity(10), lava, 16, percent=33))
+
+            c.add(coal_gradient.with_template(ClusterDeposit(coal_vein)))
+            c.add(ClusterDeposit(Vein(basalt).with_purity(20), 64))
 
         with c.biomes(savanna_biomes):
             add_biome_standard(c, Vein(aluminum_ore), None, Vein(redstone_ore), Vein(granite))
