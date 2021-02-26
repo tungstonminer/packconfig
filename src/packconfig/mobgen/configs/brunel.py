@@ -555,7 +555,7 @@ b = SpawnBuilder()
 
 with b.location(Location(beach_cold)):
     with b.active_periods(DAY):
-        with b.spawn(10, 90):
+        with b.spawn(5, 45):
             b.add(walrus.with_rarity(10).with_groups_allowed(5))
             b.add(polar_bear.with_rarity(1))
             b.add(horseshoecrab.configure(30, 3))
@@ -563,36 +563,36 @@ with b.location(Location(beach_cold)):
 
 with b.location(Location(beach_gravel)):
     with b.active_periods(DAY):
-        with b.spawn(5, 90):
+        with b.spawn(5, 45):
             b.add(horseshoecrab.configure(30).with_groups_allowed(3))
 
 
 with b.location(Location(beach_sandy)):
     with b.active_periods(DAY):
-        with b.spawn(5, 90):
+        with b.spawn(5, 45):
             b.add(crab.with_rarity(60).with_groups_allowed(3))
 
 
 with b.location(Location(desert)):
     with b.active_periods(DAY):
-        with b.spawn(20, 90):
+        with b.spawn(10, 45):
             b.add(coyote.configure(10, 5))
 
     with b.active_periods(NIGHT):
-        with b.spawn(3, 90):
+        with b.spawn(1, 45):
             b.add(tarantula.configure(1, 2))
 
 with b.location(Location(desert.in_cave())):
     with b.active_periods(ANY):
         with b.altitude(upper=48):
             with b.light(upper=0):
-                with b.spawn(16, 1):
+                with b.spawn(8, 1):
                     b.add(blaze.configure(20, 10))
 
 
 with b.location(Location(forest_canopy)):
     with b.active_periods(DAY):
-        with b.spawn(64, 60):
+        with b.spawn(32, 30):
             b.add(bull_mooshroom.with_rarity(20).with_groups_allowed(1))
             b.add(cow_mooshroom.with_rarity(20).with_groups_allowed(2))
             b.add(calf_mooshroom.with_rarity(20).with_groups_allowed(1))
@@ -600,7 +600,7 @@ with b.location(Location(forest_canopy)):
             b.add(pheasant.configure(10, 4))
 
     with b.active_periods(TWILIGHT):
-        with b.spawn(20, 60):
+        with b.spawn(10, 30):
             b.add(buck_havana.with_rarity(20).with_groups_allowed(2))
             b.add(doe_havana.configure(20, 4))
             b.add(kit_havana.configure(20, 2))
@@ -608,7 +608,7 @@ with b.location(Location(forest_canopy)):
 
 with b.location(Location(forest_hills)):
     with b.active_periods(DAY):
-        with b.spawn(20, 30):
+        with b.spawn(10, 15):
             b.add(bull_holstein.configure(20, 1))
             b.add(cow_holstein.configure(20, 2))
             b.add(calf_holstein.configure(20, 1))
@@ -634,7 +634,7 @@ with b.location(Location(forest_hills)):
             b.add(hedgehog.configure(20, 10))
 
     with b.active_periods(TWILIGHT):
-        with b.spawn(32, 90):
+        with b.spawn(16, 45):
             b.add(buck_chinchilla.configure(20, 2))
             b.add(doe_chinchilla.configure(20, 4))
             b.add(kit_chinchilla.configure(20, 2))
@@ -644,28 +644,28 @@ with b.location(Location(forest_hills)):
 
 with b.location(Location(forest_ice)):
     with b.active_periods(DAY):
-        with b.spawn(20, 30):
+        with b.spawn(10, 15):
             b.add(reindeer.configure(20, 10))
             b.add(brownbear.configure(5, 2))
 
 
 with b.location(Location(forest_jungle)):
     with b.active_periods(DAY):
-        with b.spawn(64, 15):
+        with b.spawn(32, 15):
             b.add(dartfrog.configure(75, 10))
             b.add(songbird.configure(20, 15))
             b.add(parrot.configure(75, 10))
             b.add(ocelot.configure(2, 1))
 
     with b.active_periods(NIGHT):
-        with b.spawn(64, 15):
+        with b.spawn(32, 15):
             b.add(foliaath.configure(1, 3))
             b.add(foliaath_baby.configure(1, 2))
 
 
 with b.location(Location(forest_temperate)):
     with b.active_periods(DAY):
-        with b.spawn(48, 60):
+        with b.spawn(24, 30):
             b.add(bull_angus.configure(20, 1))
             b.add(cow_angus.configure(20, 2))
             b.add(calf_angus.configure(20, 1))
@@ -687,13 +687,13 @@ with b.location(Location(forest_temperate)):
             b.add(hedgehog.configure(20, 10))
 
     with b.active_periods(NIGHT):
-        with b.spawn(48, 60):
+        with b.spawn(24, 30):
             b.add(fox.configure(30, 10))
 
 
 with b.location(Location(mesa)):
     with b.active_periods(DAY):
-        with b.spawn(20, 90):
+        with b.spawn(10, 45):
             b.add(bull_friesian.configure(20, 1))
             b.add(cow_friesian.configure(20, 2))
             b.add(calf_friesian.configure(20, 1))
@@ -712,7 +712,7 @@ with b.location(Location(mesa)):
             b.add(mule.configure(6, 4))
 
     with b.active_periods(TWILIGHT):
-        with b.spawn(3, 90):
+        with b.spawn(3, 45):
             b.add(buck_cottontail.configure(20, 2))
             b.add(doe_cottontail.configure(20, 4))
             b.add(kit_cottontail.configure(20, 2))
@@ -720,55 +720,55 @@ with b.location(Location(mesa)):
 with b.location(Location(mesa.in_cave())):
     with b.active_periods(ANY):
         with b.light(upper=0):
-            with b.spawn(32, 1):
+            with b.spawn(16, 1):
                 b.add(blaze.configure(20, 20))
 
 
 with b.location(Location(mountain)):
     with b.active_periods(DAY):
-        with b.spawn(20, 90):
+        with b.spawn(10, 45):
             b.add(buck_angora.configure(5, 2))
             b.add(doe_angora.configure(5, 4))
             b.add(kid_angora.configure(5, 2))
 
         with b.altitude(lower=110):
-            with b.spawn(4, 90):
+            with b.spawn(2, 45):
                 b.add(naga.configure(1, 2))
 
         with b.altitude(upper=110):
-            with b.spawn(48, 90):
+            with b.spawn(24, 45):
                 b.add(llama.configure(20, 10))
 
     with b.active_periods(NIGHT):
         with b.altitude(upper=110):
-            with b.spawn(8, 90):
+            with b.spawn(4, 45):
                 b.add(wolf.configure(1, 4))
 
 with b.location(Location(mountain.in_cave())):
     with b.active_periods(ANY):
         with b.altitude(upper=48):
             with b.light(upper=0):
-                with b.spawn(48, 1):
+                with b.spawn(24, 1):
                     b.add(zotzpyre.configure(20, 16))
 
-        with b.spawn(16, 1):
+        with b.spawn(8, 1):
             b.add(villager_golem.configure(10, 8))
 
 
 with b.location(Location(mountain_forest)):
     with b.active_periods(DAY):
-        with b.spawn(32, 90):
+        with b.spawn(16, 45):
             b.add(lammergeier.configure(2, 5))
             b.add(squirrel.configure(30, 5))
 
     with b.active_periods(NIGHT):
-        with b.spawn(32, 90):
+        with b.spawn(16, 45):
             b.add(feralwolf.configure(1, 1))
 
 
 with b.location(Location(mushroom)):
     with b.active_periods(DAY):
-        with b.spawn(32, 30):
+        with b.spawn(16, 15):
             b.add(bull_mooshroom.configure(20, 2))
             b.add(cow_mooshroom.configure(20, 4))
             b.add(calf_mooshroom.configure(20, 2))
@@ -776,7 +776,7 @@ with b.location(Location(mushroom)):
 
 with b.location(Location(ocean)):
     with b.active_periods(ANY):
-        with b.spawn(64, 30):
+        with b.spawn(32, 15):
             b.add(bobbit_worm.configure(1, 2))
             b.add(eel_saltwater.configure(20, 4))
             b.add(jellyfish.configure(25, 10))
@@ -785,7 +785,7 @@ with b.location(Location(ocean)):
 
 with b.location(Location(ocean_deep)):
     with b.active_periods(ANY):
-        with b.spawn(32, 90):
+        with b.spawn(16, 45):
             b.add(jellyfish.configure(25, 10))
             b.add(shark.configure(10, 10))
             b.add(whale.configure(10, 10))
@@ -794,7 +794,7 @@ with b.location(Location(ocean_deep)):
 
 with b.location(Location(ocean_frozen.in_water())):
     with b.active_periods(ANY):
-        with b.spawn(16, 120):
+        with b.spawn(6, 60):
             b.add(shark.configure(5, 5))
             b.add(whale.configure(5, 5))
             b.add(squid.configure(15, 5))
@@ -802,7 +802,7 @@ with b.location(Location(ocean_frozen.in_water())):
 
 with b.location(Location(nether)):
     with b.active_periods(ANY):
-        with b.spawn(32, 90):
+        with b.spawn(16, 45):
             b.add(skeleton.configure(8, 8))
             b.add(zombie.configure(4, 2))
             b.add(zombie_villager.configure(1, 2))
@@ -810,7 +810,7 @@ with b.location(Location(nether)):
 
 with b.location(Location(plains)):
     with b.active_periods(DAY):
-        with b.spawn(40, 60):
+        with b.spawn(20, 30):
             b.add(bull_jersey.configure(20, 1))
             b.add(cow_jersey.configure(20, 2))
             b.add(calf_jersey.configure(20, 1))
@@ -836,7 +836,7 @@ with b.location(Location(plains)):
             b.add(hamster.configure(15, 10))
 
     with b.active_periods(TWILIGHT):
-        with b.spawn(40, 60):
+        with b.spawn(20, 30):
             b.add(buck_jack.configure(20, 2))
             b.add(doe_jack.configure(20, 4))
             b.add(kit_jack.configure(20, 2))
@@ -848,26 +848,26 @@ with b.location(Location(BiomeSet.merge(plains, savanna).in_cave())):
     with b.active_periods(ANY):
         with b.altitude(upper=48):
             with b.light(upper=0):
-                with b.spawn(16, 1):
+                with b.spawn(8, 1):
                     b.add(cave_spider.configure(20, 10))
 
 
 with b.location(Location(river.in_water())):
     with b.active_periods(ANY):
-        with b.spawn(16, 15):
+        with b.spawn(8, 15):
             b.add(eel_freshwater.configure(20, 4))
             b.add(frog.configure(30, 10))
 
 
 with b.location(Location(river_frozen.in_water())):
     with b.active_periods(ANY):
-        with b.spawn(8, 15):
+        with b.spawn(4, 15):
             b.add(eel_freshwater.configure(10, 2))
 
 
 with b.location(Location(savanna)):
     with b.active_periods(DAY):
-        with b.spawn(32, 90):
+        with b.spawn(16, 45):
             b.add(bull_longhorn.configure(20, 1))
             b.add(cow_longhorn.configure(20, 2))
             b.add(calf_longhorn.configure(20, 1))
@@ -888,7 +888,7 @@ with b.location(Location(savanna)):
             b.add(hamster.configure(15, 10))
 
     with b.active_periods(TWILIGHT):
-        with b.spawn(8, 45):
+        with b.spawn(8, 20):
             b.add(buck_lop.configure(20, 2))
             b.add(doe_lop.configure(20, 4))
             b.add(kit_lop.configure(20, 2))
@@ -897,7 +897,7 @@ with b.location(Location(savanna)):
 village_blocks = [Ore("minecraft:grass_path"), mc.dirt, mc.grass, mc.gravel, Ore("minecraft:log")]
 with b.location(Location(settled.with_blocks(village_blocks), structure="Village")):
     with b.active_periods(DAY):
-        with b.spawn(20, 1):
+        with b.spawn(10, 1):
             b.add(stallion_draft.configure(20, 1))
             b.add(mare_draft.configure(20, 2))
             b.add(foal_draft.configure(20, 1))
@@ -906,38 +906,38 @@ with b.location(Location(settled.with_blocks(village_blocks), structure="Village
 
 with b.location(Location(settled.in_cave().with_blocks(mc.cobblestone, mc.dirt, mc.planks), structure="Village")):
     with b.active_periods(NIGHT):
-        with b.spawn(4, 60):
+        with b.spawn(2, 30):
             b.add(villager.with_rarity(1).with_groups_allowed(4))
 
 
 with b.location(Location(swamp)):
     with b.active_periods(NIGHT):
-        with b.spawn(64, 15):
+        with b.spawn(32, 15):
             b.add(slime.configure(20, 10))
             b.add(foliaath.configure(1, 3))
             b.add(foliaath_baby.configure(1, 2))
 
     with b.active_periods(TWILIGHT):
-        with b.spawn(10, 7):
+        with b.spawn(5, 7):
             b.add(toad.configure(5, 10))
 
 
 with b.location(Location(swamp.in_cave())):
     with b.active_periods(ANY):
         with b.altitude(upper=24):
-            with b.spawn(16, 1):
+            with b.spawn(8, 1):
                 b.add(grottol.configure(20, 3))
 
 
 with b.location(Location(swamp.in_water())):
     with b.active_periods(ANY):
-        with b.spawn(20, 30):
+        with b.spawn(10, 15):
             b.add(lamprey.configure(8, 20))
 
 
 with b.location(Location(swamp, weather="rain")):
     with b.active_periods(ANY):
-        with b.spawn(64, 15):
+        with b.spawn(32, 15):
             b.add(slime.configure(20, 10))
 
 
@@ -949,7 +949,7 @@ with b.location(Location(swamp, structure="Temple")):
 
 with b.location(Location(taiga)):
     with b.active_periods(DAY):
-        with b.spawn(24, 60):
+        with b.spawn(12, 30):
             b.add(bull_hereford.configure(20, 1))
             b.add(cow_hereford.configure(20, 2))
             b.add(calf_hereford.configure(20, 1))
@@ -972,7 +972,7 @@ with b.location(Location(taiga)):
             b.add(hamster.configure(15, 10))
 
     with b.active_periods(TWILIGHT):
-        with b.spawn(20, 45):
+        with b.spawn(10, 20):
             b.add(buck_new_zealand.configure(20, 2))
             b.add(doe_new_zealand.configure(20, 4))
             b.add(kit_new_zealand.configure(20, 2))
@@ -980,7 +980,7 @@ with b.location(Location(taiga)):
 
 with b.location(Location(taiga_hills)):
     with b.active_periods(DAY):
-        with b.spawn(24, 60):
+        with b.spawn(12, 30):
             b.add(bull_highland.configure(20, 1))
             b.add(cow_highland.configure(20, 2))
             b.add(calf_highland.configure(20, 1))
@@ -999,11 +999,11 @@ with b.location(Location(taiga_hills)):
             b.add(hedgehog.configure(20, 10))
 
     with b.active_periods(NIGHT):
-        with b.spawn(10, 60):
+        with b.spawn(5, 30):
             b.add(fox.configure(30, 10))
 
     with b.active_periods(TWILIGHT):
-        with b.spawn(20, 45):
+        with b.spawn(10, 20):
             b.add(buck_rex.configure(20, 2))
             b.add(doe_rex.configure(20, 4))
             b.add(kit_rex.configure(20, 2))
@@ -1011,7 +1011,7 @@ with b.location(Location(taiga_hills)):
 
 with b.location(Location(taiga_snowy)):
     with b.active_periods(DAY):
-        with b.spawn(24, 60):
+        with b.spawn(12, 30):
             b.add(peacock_white.configure(5, 2))
             b.add(peahen_white.configure(5, 4))
             b.add(peachick_white.configure(5, 2))
@@ -1019,23 +1019,23 @@ with b.location(Location(taiga_snowy)):
             b.add(reindeer.configure(10, 5))
 
     with b.active_periods(NIGHT):
-        with b.spawn(10, 60):
+        with b.spawn(5, 30):
             b.add(hirschgeist.configure(1, 2))
 
 
 with b.location(Location(the_end)):
     with b.active_periods(ANY):
-        with b.spawn(64, 30):
+        with b.spawn(32, 15):
             b.add(enderman.configure(100, 20, Range(1, 4)))
 
 
 with b.location(Location(tundra)):
     with b.active_periods(DAY):
-        with b.spawn(4, 120):
+        with b.spawn(4, 60):
             b.add(polar_bear.configure(10, 2))
 
     with b.active_periods(NIGHT):
-        with b.spawn(2, 120):
+        with b.spawn(2, 60):
             b.add(frostmaw.configure(1, 2))
 
 
@@ -1043,7 +1043,7 @@ with b.location(Location(tundra.in_cave())):
     with b.active_periods(ANY):
         with b.altitude(upper=48):
             with b.light(upper=0):
-                with b.spawn(16, 1):
+                with b.spawn(8, 1):
                     b.add(zotzpyre.configure(20, 10))
 
 
@@ -1055,14 +1055,14 @@ with b.location(Location(earth)):
 
 with b.location(Location(earth)):
     with b.active_periods(NIGHT):
-        with b.spawn(16, 60):
+        with b.spawn(8, 60):
             b.add(bat.configure(1, 4))
 
 
 with b.location(Location(earth.in_cave())):
     with b.active_periods(ANY):
         with b.altitude(lower=48):
-            with b.spawn(32, 1):
+            with b.spawn(16, 1):
                 b.add(bat.configure(10, 16))
 
 
