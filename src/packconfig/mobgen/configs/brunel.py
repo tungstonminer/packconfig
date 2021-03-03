@@ -35,7 +35,7 @@ CARPETED = OreList(mc.grass, mc.dirt, mc.sand)
 FUNGAL = OreList(mc.mycelium)
 GRASSY = OreList(mc.grass, mc.dirt, mc.sand)
 GRAVELLY = OreList(mc.gravel, mc.dirt, mc.sand)
-HELLISH = OreList(mc.netherrack, mc.soul_sand, mc.nether_brick, mc.bedrock)
+HELLISH = OreList(mc.netherrack, mc.soul_sand, mc.nether_brick, mc.bedrock, mc.stone)
 MOLTEN = OreList(mc.lava)
 SANDY = OreList(mc.dirt, mc.sand, mc.sandstone)
 SNOWY = OreList(mc.dirt, mc.gravel, mc.ice, mc.sand, mc.snow)
@@ -324,7 +324,7 @@ zotzpyre_loot = default_loot
 badger = Creature("betteranimalsplus:badger", LONER, loot_list=mammal_small_loot)
 bat = Creature("minecraft:bat", HERD, loot_list=no_loot)
 blackbear = Creature("betteranimalsplus:blackbear", PAIR, loot_list=bear_black_loot)
-blaze = Creature("minecraft:blaze", LONER, loot_list=blaze_loot)
+blaze = Creature("minecraft:blaze", CLUSTER, loot_list=blaze_loot)
 boar = Creature("betteranimalsplus:boar", TROOP, loot_list=boar_loot)
 bobbit_worm = Creature("betteranimalsplus:bobbit_worm", LONER, loot_list=no_loot)
 brownbear = Creature("betteranimalsplus:brownbear", PAIR, loot_list=bear_brown_loot)
@@ -495,11 +495,12 @@ with b.location(Location(desert)):
         with b.spawn(5, 15):
             b.add(doe_jack.configure(15, 3))
 
-with b.location(Location(desert.in_cave())):
+
+with b.location(Location(desert.in_cave().with_blocks(HELLISH))):
     with b.active_periods(ANY):
         with b.altitude(upper=48):
             with b.light(upper=0):
-                with b.spawn(16, 90):
+                with b.spawn(32, 15):
                     b.add(blaze.configure(5, 10))
 
 
@@ -548,8 +549,8 @@ with b.location(Location(forest_jungle)):
             b.add(peahen_peach.configure(2, 1))
 
     with b.active_periods(NIGHT):
-        with b.spawn(10, 30):
-            b.add(dartfrog.configure(80, 10))
+        with b.spawn(5, 30):
+            b.add(dartfrog.configure(10, 3))
             b.add(ocelot.configure(5, 2))
 
     with b.active_periods(ANY):
@@ -591,7 +592,7 @@ with b.location(Location(mesa)):
 with b.location(Location(mesa.in_cave())):
     with b.active_periods(ANY):
         with b.light(upper=0):
-            with b.spawn(16, 90):
+            with b.spawn(32, 90):
                 b.add(blaze.configure(5, 10))
 
 
