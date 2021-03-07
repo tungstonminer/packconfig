@@ -515,14 +515,18 @@ with b.location(Location(forest_canopy)):
         with b.spawn(5, 15):
             b.add(doe_lop.configure(25, 3))
 
+    with b.active_periods(NIGHT):
+        with b.spawn(6, 90):
+            b.add(spider.configure(10, 2))
+
 
 with b.location(Location(forest_hills)):
     with b.active_periods(DAY):
         with b.spawn(15, 90):
             b.add(pheasant.configure(40, 5))
-            b.add(badger.configure(30, 2))
-            b.add(hen_rhode_island_red.configure(20, 3))
-            b.add(sow_large_white.configure(10, 3))
+            b.add(hen_rhode_island_red.configure(30, 3))
+            b.add(sow_large_white.configure(20, 3))
+            b.add(badger.configure(10, 2))
             b.add(cow_hereford.configure(5, 2))
             b.add(blackbear.configure(1, 1))
 
@@ -554,8 +558,8 @@ with b.location(Location(forest_jungle)):
             b.add(ocelot.configure(5, 2))
 
     with b.active_periods(ANY):
-        with b.spawn(4, 30):
-            b.add(foliaath.configure(1, 4))
+        with b.spawn(1, 150):
+            b.add(foliaath.configure(1, 1))
 
 
 with b.location(Location(forest_temperate)):
@@ -604,10 +608,13 @@ with b.location(Location(mountain)):
                 b.add(naga.configure(5, 3))
 
         with b.altitude(upper=110):
-            with b.spawn(20, 90):
+            with b.spawn(15, 90):
                 b.add(doe_alpine.configure(10, 5))
-                b.add(doe_chinchilla.configure(15, 5))
                 b.add(llama.configure(5, 3))
+
+    with b.active_periods(TWILIGHT):
+        with b.spawn(5, 15):
+            b.add(doe_chinchilla.configure(15, 3))
 
     with b.active_periods(NIGHT):
         with b.altitude(upper=110):
@@ -650,11 +657,11 @@ with b.location(Location(ocean)):
 
 with b.location(Location(ocean_deep)):
     with b.active_periods(ANY):
-        with b.spawn(60, 60):
+        with b.spawn(45, 60):
             b.add(jellyfish.configure(25, 5))
             b.add(nautilus.configure(20, 4))
-            b.add(shark.configure(10, 2))
-            b.add(whale.configure(5, 2))
+            b.add(shark.configure(10, 1))
+            b.add(whale.configure(5, 1))
 
 
 with b.location(Location(ocean_frozen.in_water())):
@@ -773,9 +780,12 @@ with b.location(Location(swamp, structure="Temple")):
 with b.location(Location(taiga)):
     with b.active_periods(DAY):
         with b.spawn(10, 90):
-            b.add(doe_havana.configure(40, 3))
             b.add(turkey.configure(20, 3))
             b.add(brownbear.configure(5, 1))
+
+    with b.active_periods(TWILIGHT):
+        with b.spawn(5, 30):
+            b.add(doe_havana.configure(40, 3))
 
 
 with b.location(Location(taiga_hills)):
