@@ -85,6 +85,8 @@ roofed_forest_biomes = BiomeSet(
 )
 
 savanna_biomes = BiomeSet(
+    "minecraft:mutated_savanna",
+    "minecraft:mutated_savanna_rock",
     "minecraft:savanna",
     "minecraft:savanna_rock",
 )

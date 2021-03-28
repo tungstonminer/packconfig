@@ -650,16 +650,16 @@ with b.location(Location(ocean)):
     with b.active_periods(ANY):
         with b.spawn(30, 30):
             b.add(squid.configure(50, 5))
-            b.add(jellyfish.configure(40, 5))
-            b.add(eel_saltwater.configure(30, 4))
+            b.add(eel_saltwater.configure(40, 4))
+            b.add(jellyfish.configure(30, 3))
             b.add(bobbit_worm.configure(20, 2))
 
 
 with b.location(Location(ocean_deep)):
     with b.active_periods(ANY):
         with b.spawn(45, 60):
-            b.add(jellyfish.configure(25, 5))
             b.add(nautilus.configure(20, 4))
+            b.add(jellyfish.configure(15, 2))
             b.add(shark.configure(10, 1))
             b.add(whale.configure(5, 1))
 
