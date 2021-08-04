@@ -5,4 +5,4 @@ from packconfig.oregen import Ore
 
 # Fluids ###############################################################################################################
 
-crude_oil_fluid = Ore("immersivepetrolium:fluid_crude_oil")
+crude_oil_fluid = Ore("immersivepetroleum:fluid_crude_oil")

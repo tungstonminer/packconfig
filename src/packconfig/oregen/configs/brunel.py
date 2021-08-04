@@ -24,13 +24,13 @@ vanilla.config.enabled = False
 
 # Distributions ########################################################################################################
 
-desert_nether_band = UniformDistribution("desert_nether", 0, 28)
+deep_band = UniformDistribution("deep", 16, 48)
 lava_band = UniformDistribution("lava", 0, 16)
 mountain_band = UniformDistribution("mountain", 64, 128)
 nether_band = UniformDistribution("nether", 8, 118)
 ocean_floor_band = UniformDistribution("ocean_floor", 0, 56)
-oil_band = UniformDistribution("oil", 16, 56)
 submerged_gravel_band = UniformDistribution("submerged_gravel", 32, 64)
+surface_band = UniformDistribution("surface", 48, 80)
 
 
 # Biomes ###############################################################################################################
@@ -51,39 +51,6 @@ savanna_biomes = BiomeSet().add(mc.savanna_biomes)
 shore_biomes = BiomeSet().add(mc.shore_biomes)
 swamp_biomes = BiomeSet().add(mc.swamp_biomes)
 tundra_biomes = BiomeSet().add(mc.tundra_biomes)
-
-
-# Gradients ############################################################################################################
-
-metal_gradient = Gradient(
-    "metal",
-    Sweep("max_height", 12, 72), Sweep("min_height", 4, 64),
-    Sweep("purity", 2.0, 1.0), Sweep("cluster_size", 8, 1),
-)
-
-mountain_gradient = Gradient(
-    "mountain",
-    Sweep("max_height", 72, 128), Sweep("min_height", 64, 120),
-    Sweep("purity", 1.0, 1.5), Sweep("cluster_size", 1, 2),
-)
-
-gemstone_gradient = Gradient(
-    "gemstone",
-    Sweep("max_height", 12, 40), Sweep("min_height", 4, 32),
-    Sweep("purity", 0.3, 0.1), Sweep("cluster_size", 2, 1),
-)
-
-mineral_buried_gradient = Gradient(
-    "buried_mineral",
-    Sweep("max_height", 64, 40), Sweep("min_height", 56, 32),
-    Sweep("purity", 1.5, 0.25), Sweep("cluster_size", 8, 1),
-)
-
-mineral_surface_gradient = Gradient(
-    "surface_mineral",
-    Sweep("max_height", 72, 128), Sweep("min_height", 64, 120),
-    Sweep("purity", 1.25, 0.25), Sweep("cluster_size", 4, 1),
-)
 
 
 # Ores #################################################################################################################
@@ -144,47 +111,46 @@ shale = rc.quaried_stone
 stone = mc.stone
 
 
-# Helper Functions #####################################################################################################
-
-def add_biome_standard(config: ConfigFile, metal: Vein, mineral: Vein, gemstone: Vein, rock: Vein):
-    if metal is not None:
-        c.add(metal_gradient.with_template(ClusterDeposit(metal)))
-
-    if mineral is not None:
-        c.add(mineral_buried_gradient.with_template(ClusterDeposit(mineral)))
-        c.add(mineral_surface_gradient.with_template(ClusterDeposit(mineral)))
-
-    if gemstone is not None:
-        c.add(gemstone_gradient.with_template(ClusterDeposit(gemstone)))
-
-    if rock is not None:
-        c.add(ClusterDeposit(rock.with_purity(20), 64))
-
-
 # Config File ##########################################################################################################
 
 config = ConfigFile("02_brunel.json")
 with config as c:
     with c.dimension(mc.overworld):
         with c.biomes(mountain_biomes):
-            add_biome_standard(c, Vein(iron_ore), None, Vein(silver_ore), Vein(marble))
-            c.add(mountain_gradient.with_template(ClusterDeposit(Vein(iron_ore))))
+            g = Gradient(
+                "buried_iron",
+                Sweep("max_height", 12, 72), Sweep("min_height", 4, 64),
+                Sweep("purity", 2.0, 1.0), Sweep("cluster_size", 8, 1),
+            )
+            c.add(g.with_template(ClusterDeposit(Vein(iron_ore))))
+
+            g = Gradient(
+                "mountain_iron",
+                Sweep("max_height", 72, 128), Sweep("min_height", 64, 120),
+                Sweep("purity", 1.0, 1.5), Sweep("cluster_size", 1, 2),
+            )
+            c.add(g.with_template(ClusterDeposit(Vein(iron_ore))))
+
+            g = Gradient(
+                "mountain_lapis",
+                Sweep("max_height", 104, 256), Sweep("min_height", 96, 248),
+                Sweep("purity", 1.0, 1.5), Sweep("cluster_size", 2, 4),
+            )
+            c.add(g.with_template(ClusterDeposit(Vein(lapis_ore))))
 
             with c.distribution(mountain_band):
+                c.add(ClusterDeposit(Vein(marble).with_purity(15), 32))
                 c.add(ClusterDeposit(Vein(iron_gravel_ore, material_ore=gravel, purity=1.0), 2))
 
         with c.biomes(river_biomes):
-            add_biome_standard(c, None, None, None, None)
-
             with c.distribution(submerged_gravel_band):
                 c.add(ClusterDeposit(Vein(iron_gravel_ore, material_ore=gravel, purity=1.0), 2))
                 c.add(ClusterDeposit(Vein(silver_gravel_ore, material_ore=gravel, purity=0.5), 2))
                 c.add(ClusterDeposit(Vein(gold_gravel_ore, material_ore=gravel, purity=0.25), 2))
 
         with c.biomes(ocean_biomes):
-            add_biome_standard(c, None, None, None, Vein(limestone))
-
             with c.distribution(ocean_floor_band):
+                c.add(ClusterDeposit(Vein(limestone).with_purity(15), 32))
                 c.add(ClusterDeposit(Vein(iron_gravel_ore, material_ore=gravel, purity=0.8), 1))
                 c.add(ClusterDeposit(Vein(copper_gravel_ore, material_ore=gravel, purity=0.7), 1))
                 c.add(ClusterDeposit(Vein(tin_gravel_ore, material_ore=gravel, purity=0.6), 1))
@@ -195,27 +161,79 @@ with config as c:
                 c.add(ClusterDeposit(Vein(gold_gravel_ore, material_ore=gravel, purity=0.1), 1))
 
         with c.biomes(shore_biomes):
-            add_biome_standard(c, None, None, None, Vein(limestone))
+            with c.distribution(ocean_floor_band):
+                c.add(ClusterDeposit(Vein(limestone).with_purity(15), 32))
 
         with c.biomes(tundra_biomes):
-            add_biome_standard(c, Vein(lead_ore), None, Vein(lapis_ore), Vein(shale))
+            g = Gradient(
+                "buried_galena",
+                Sweep("max_height", 12, 72), Sweep("min_height", 4, 64),
+                Sweep("purity", 2.0, 1.0), Sweep("cluster_size", 8, 1),
+            )
+            c.add(g.with_template(ClusterDeposit(Vein(lead_ore.weighted(75), silver_ore.weighted(25)))))
+
+            with c.distribution(surface_band):
+                c.add(ClusterDeposit(Vein(shale).with_purity(15), 32))
 
         with c.biomes(forest_cold_biomes):
-            add_biome_standard(c, Vein(nickel_ore), None, None, Vein(diorite))
+            g = Gradient(
+                "buried_nickel",
+                Sweep("max_height", 12, 72), Sweep("min_height", 4, 64),
+                Sweep("purity", 2.0, 1.0), Sweep("cluster_size", 8, 1),
+            )
+            c.add(g.with_template(ClusterDeposit(Vein(nickel_ore))))
+
+            with c.distribution(deep_band):
+                c.add(ClusterDeposit(Vein(diorite).with_purity(15), 32))
 
         with c.biomes(forest_cool_biomes):
-            add_biome_standard(c, Vein(uranium_ore), None, None, Vein(gabbro))
+            g = Gradient(
+                "buried_uranium",
+                Sweep("max_height", 12, 40), Sweep("min_height", 4, 32),
+                Sweep("purity", 1.5, 0.5), Sweep("cluster_size", 8, 4),
+            )
+            v = Vein(lead_ore.weighted(75), uranium_ore.weighted(25))
+            c.add(g.with_template(ClusterDeposit(v)))
+
+            with c.distribution(deep_band):
+                c.add(ClusterDeposit(Vein(gabbro).with_purity(15), 32))
 
         with c.biomes(forest_warm_biomes):
-            add_biome_standard(c, Vein(copper_ore), None, None, Vein(andesite))
+            g = Gradient(
+                "buried_copper",
+                Sweep("max_height", 12, 72), Sweep("min_height", 4, 64),
+                Sweep("purity", 1.0, 2.0), Sweep("cluster_size", 1, 8),
+            )
+            v = Vein(copper_ore.weighted(90), redstone_ore.weighted(10))
+            c.add(g.with_template(ClusterDeposit(v)))
+
+            g = Gradient(
+                "buried_redstone",
+                Sweep("max_height", 8, 12), Sweep("min_height", 0, 16),
+                Sweep("purity", 2.0, 0.5), Sweep("cluster_size", 8, 1),
+            )
+            v = Vein(redstone_ore.weighted(75), copper_ore.weighted(25))
+            c.add(g.with_template(ClusterDeposit(v)))
+
+            with c.distribution(deep_band):
+                c.add(ClusterDeposit(Vein(andesite).with_purity(15), 32))
 
         with c.biomes(plains_biomes):
-            add_biome_standard(c, Vein(tin_ore), Vein(apatite_ore), None, None)
+            g = Gradient(
+                "buried_tin",
+                Sweep("max_height", 12, 72), Sweep("min_height", 4, 64),
+                Sweep("purity", 1.0, 2.0), Sweep("cluster_size", 1, 8),
+            )
+            v = Vein(tin_ore.weighted(80), zinc_ore.weighted(20))
+            c.add(g.with_template(ClusterDeposit(v)))
+
+            with c.distribution(deep_band):
+                c.add(ClusterDeposit(Vein(andesite).with_purity(15), 32))
 
         with c.biomes(swamp_biomes):
             coal_vein = Vein(
-                coal_ore.weighted(99.5),
-                diamond_ore.weighted(0.5),
+                coal_ore.weighted(99),
+                diamond_ore.weighted(1),
             )
             coal_gradient = Gradient(
                 "coal_gradient",
@@ -224,39 +242,68 @@ with config as c:
             )
 
             with c.distribution(lava_band):
-                c.add(LakeDeposit(Vein(diamond_ore).with_purity(10), lava, 16, percent=33))
+                c.add(ClusterDeposit(Vein(diamond_ore).with_purity(0.5), 2))
 
             c.add(coal_gradient.with_template(ClusterDeposit(coal_vein)))
-            c.add(ClusterDeposit(Vein(basalt).with_purity(20), 64))
+            c.add(ClusterDeposit(Vein(basalt).with_purity(15), 32))
 
         with c.biomes(savanna_biomes):
-            add_biome_standard(c, Vein(aluminum_ore), None, Vein(redstone_ore), Vein(granite))
+            g = Gradient(
+                "buried_aluminum",
+                Sweep("max_height", 12, 72), Sweep("min_height", 4, 64),
+                Sweep("purity", 2.0, 0.5), Sweep("cluster_size", 8, 1),
+            )
+            c.add(g.with_template(ClusterDeposit(Vein(aluminum_ore))))
+
+            with c.distribution(deep_band):
+                c.add(ClusterDeposit(Vein(granite).with_purity(15), 32))
 
         with c.biomes(forest_hot_biomes):
-            add_biome_standard(c, Vein(zinc_ore), None, Vein(emerald_ore), None)
+            g = Gradient(
+                "buried_apatite",
+                Sweep("max_height", 54, 80), Sweep("min_height", 48, 72),
+                Sweep("purity", 2.0, 1.0), Sweep("cluster_size", 8, 1),
+            )
+            c.add(g.with_template(ClusterDeposit(Vein(apatite_ore))))
+
+            with c.distribution(lava_band):
+                c.add(ClusterDeposit(Vein(emerald_ore).with_purity(0.5), 2))
 
         with c.biomes(mesa_biomes):
-            metal_vein = Vein(gold_ore.weighted(75), stone.weighted(25))
-            add_biome_standard(c, metal_vein, None, None, Vein(granite))
-            c.add(mountain_gradient.with_template(ClusterDeposit(metal_vein)))
+            g = Gradient(
+                "buried_gold",
+                Sweep("max_height", 12, 72), Sweep("min_height", 4, 64),
+                Sweep("purity", 0.5, 0.25), Sweep("cluster_size", 4, 2),
+            )
+            c.add(g.with_template(ClusterDeposit(Vein(gold_ore))))
+
+            g = Gradient(
+                "mesa_gold",
+                Sweep("max_height", 72, 128), Sweep("min_height", 64, 120),
+                Sweep("purity", 0.25, 0.1), Sweep("cluster_size", 2, 1),
+            )
+            c.add(g.with_template(ClusterDeposit(Vein(gold_ore))))
 
         with c.biomes(desert_biomes):
             g = Gradient(
                 "netherrack",
-                Sweep("max_height", 8, 32), Sweep("min_height", 0, 26),
+                Sweep("max_height", 8, 48), Sweep("min_height", 0, 32),
                 Sweep("purity", 100, 1), Sweep("cluster_size", 32, 1),
             )
             vein = Vein(netherrack.weighted(999), mc.lava.weighted(1))
             c.add(g.with_template(ClusterDeposit(vein)))
 
-            with c.distribution(desert_nether_band):
+            with c.distribution(UniformDistribution("oil", 48, 60)):
+                c.add(LakeDeposit(Vein(coal_ore).with_purity(10), crude_oil, 64, deposit_name="crude_oil", percent=25))
+
+            with c.distribution(UniformDistribution("desert_nether", 0, 48)):
                 c.add(ClusterDeposit(Vein(quartz_ore, material_ore=netherrack, purity=2.0)))
-                c.add(CaveDeposit(Vein(glowstone), cluster_count=4, max_elevation=28))
-                c.add(CaveDeposit(Vein(soul_sand), ceiling=False, cluster_count=16, max_elevation=24))
+                c.add(CaveDeposit(Vein(glowstone), cluster_count=16, max_elevation=48))
+                c.add(CaveDeposit(Vein(soul_sand), ceiling=False, cluster_count=16, max_elevation=48))
 
         with c.biomes(any_biomes):
             with c.distribution(lava_band):
-                c.add(ClusterDeposit(Vein(sulfur_ore).with_purity(0.75), 8))
+                c.add(LakeDeposit(Vein(sulfur_ore).with_purity(10), lava, 16, percent=33))
 
             with c.distribution(UniformDistribution("monster_band", 0, 24)):
                 c.add(ClusterDeposit(mc.silverfish_vein.with_purity(0.5), 2))
