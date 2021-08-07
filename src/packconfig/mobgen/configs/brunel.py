@@ -180,7 +180,7 @@ boar_loot = [Loot("2-4", meat_pork), Loot("1-2", hide_large)]
 chicken_loot = [Loot("1", carcass_chicken), Loot("0-1", feather), Loot("0-1", bone)]
 cow_loot = [Loot("3-4", meat_beef), Loot("1-2", hide_large), Loot("2-3", bone)]
 coyote_loot = default_loot
-crab_loot = [Loot("1-2", carcass_crab), Loot("0-1", bone_meal)]
+crab_loot = [Loot("1", carcass_crab), Loot("0-1", meat_crab), Loot("0-1", bone_meal)]
 creeper_loot = [Loot("2-4", gunpowder)]
 deer_loot = default_loot
 donkey_loot = [Loot("1", hide_large), Loot("1", bone)]
@@ -207,7 +207,7 @@ lamprey_loot = default_loot
 lantern_loot = default_loot
 llama_loot = [Loot("1-2", wool), Loot("1", meat_venison), Loot("1-2", bone)]
 magma_cube_loot = [Loot("1-2", magma_cream)]
-mammal_small_loot = [Loot("1", carcass_rabbit)]
+mammal_small_loot = [Loot("1", hide_small)]
 moose_loot = default_loot
 mooshroom_loot = [Loot("1-2", meat_beef), Loot("0-1", hide_large), Loot("1-2", mushroom_item)]
 mule_loot = [Loot("1", hide_large), Loot("1-2", meat_venison), Loot("1-2", bone)]
@@ -217,6 +217,7 @@ ocelot_loot = default_loot
 octopus_loot = [Loot("1-2", carcass_octopus), Loot("0-2", ink_sac)]
 parrot_loot = bird_tiny_loot
 pheasant_loot = [Loot("1-2", carcass_pheasant), Loot("0-1", feather)]
+rabbit_loot = [Loot("1", carcass_rabbit), Loot("0-1", hide_small), Loot("0-2",  rabbit_foot)]
 reindeer_loot = [Loot("1-2", meat_venison), Loot("0-2", antler)]
 shark_loot = default_loot
 shulker_loot = default_loot
@@ -295,7 +296,7 @@ parrot = Creature("minecraft:parrot", CLUSTER, loot_list=default_loot)
 pheasant = Creature("betteranimalsplus:pheasant", TROOP, loot_list=pheasant_loot)
 pig = Creature("minecraft:pig", TROOP, loot_list=default_loot)
 polar_bear = Creature("minecraft:polar_bear", LONER, loot_list=bear_polar_loot)
-rabbit = Creature("minecraft:rabbit", CLUSTER, loot_list=default_loot)
+rabbit = Creature("minecraft:rabbit", CLUSTER, loot_list=rabbit_loot)
 reindeer = Creature("betteranimalsplus:reindeer", HERD, loot_list=reindeer_loot)
 shark = Creature("betteranimalsplus:shark", CLUSTER, loot_list=shark_loot)
 sheep = Creature("minecraft:sheep", LONER, loot_list=default_loot)
